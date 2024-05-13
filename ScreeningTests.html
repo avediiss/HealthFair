@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,197 +10,206 @@
     <!-- Add KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 </head>
+
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Screening Tests</h1>
         <form id="ascvdForm" class="card card-body bg-white">
 
 
-          <!-- Sigmoidoscopy -->
-          <div class="row g-3">
-            <div class="col-md-6">
-                <label for="sigmoidoscopy" class="form-label required">Sigmoidoscopy</label>
-                <select id="sigmoidoscopy" name="sigmoidoscopy" class="form-select" required>
-                    <option value="select">Select ...</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+            <!-- Sigmoidoscopy -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="sigmoidoscopy" class="form-label required">Sigmoidoscopy</label>
+                    <select id="sigmoidoscopy" name="sigmoidoscopy" class="form-select" required>
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <!-- Colonoscopy -->
+                <div class="col-md-6">
+                    <label for="colonoscopy" class="form-label required">Colonoscopy</label>
+                    <select id="colonoscopy" name="colonoscopy" class="form-select" required>
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
             </div>
-             <!-- Colonoscopy -->
-            <div class="col-md-6">
-                <label for="colonoscopy" class="form-label required">Colonoscopy</label>
-                <select id="colonoscopy" name="colonoscopy" class="form-select" required>
-                    <option value="select">Select ...</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </div>
-        </div>
             <!-- Lung CT -->
-      <div class="row g-3">
-        <div class="col-md-6">
-            <label for="otherMeds" class="form-label required">Lung CT</label>
-            <select id="otherMeds" name="otherMeds" class="form-select" required onchange="otherMedsType()">
-                <option value="select">Select ...</option>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
-        </div>
-        <div class="col-md-6" id="otherMedsDetails" style="display: none;">
-            <label for="medicationType" class="form-label required">When?</label>
-            <input type="date" id="medicationType" name="medicationType" class="form-control" placeholder="Enter other medication names">
-        </div>
-    </div>
-         <!-- Breast Mamography: -->
-         <div class="row g-3">
-            <div class="col-md-6">
-                <label for="endocrine" class="form-label required">Breast Mamography:</label>
-                <select id="endocrine" name="endocrine" class="form-select" required onchange="endocrineType()">
-                    <option value="select">Select ...</option>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="otherMeds" class="form-label required">Lung CT</label>
+                    <select id="otherMeds" name="otherMeds" class="form-select" required onchange="otherMedsType()">
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="otherMedsDetails" style="display: none;">
+                    <label for="medicationType" class="form-label required">When?</label>
+                    <input type="date" id="medicationType" name="medicationType" class="form-control"
+                        placeholder="Enter other medication names">
+                </div>
             </div>
-            <div class="col-md-6" id="endocrineType" style="display: none;">
-                <label for="endocrineName" class="form-label required">When</label>
-                <input type="date" id="endocrineName" name="endocrine_option" class="form-control"  min="20" max="79">
-             
+            <!-- Breast Mamography: -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="endocrine" class="form-label required">Breast Mamography:</label>
+                    <select id="endocrine" name="endocrine" class="form-select" required onchange="endocrineType()">
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="endocrineType" style="display: none;">
+                    <label for="endocrineName" class="form-label required">When</label>
+                    <input type="date" id="endocrineName" name="endocrine_option" class="form-control" min="20"
+                        max="79">
+
+                </div>
             </div>
-        </div>
-        
-        <!--Breast Biopsy for SUspected Breast Cancer:-->
-        <div class="row g-3">
-          <div class="col-md-6">
-              <label for="psychological" class="form-label required">Breast Biopsy for SUspected Breast Cancer:</label>
-              <select id="psychological" name="psychological" class="form-select" required onchange="psychologicalType()">
-                <option value="select">Select ...</option>
-                  <option value="no">No</option>
-                  <option value="yes">Yes</option>
-              </select>
-          </div>
-          <div class="col-md-6" id="psychologicalType" style="display: none;">
-              <label for="psychologicalName" class="form-label required">When</label>
-              <input type="date" id="psychologicalName" name="psychological_option" class="form-control" min="20" max="79">
-                
-          </div>
-      </div>
-      <!-- Pap Smear -->
-      <div class="row g-3">
-        <div class="col-md-6">
-            <label for="neurologic" class="form-label required">PAP Smear</label>
-            <select id="neurologic" name="neurologic" class="form-select" required onchange="neurologicType()">
-                <option value="select">Select ...</option>
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
-        </div>
-        <div class="col-md-6" id="neurologicType" style="display: none;">
-            <label for="neurologicName" class="form-label required">When</label>
-            <input type="date" id="neurologicName" name="neurologic_option" class="form-control" min="20" max="79">
-               
-        </div>
+
+            <!--Breast Biopsy for SUspected Breast Cancer:-->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="psychological" class="form-label required">Breast Biopsy for SUspected Breast
+                        Cancer:</label>
+                    <select id="psychological" name="psychological" class="form-select" required
+                        onchange="psychologicalType()">
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="psychologicalType" style="display: none;">
+                    <label for="psychologicalName" class="form-label required">When</label>
+                    <input type="date" id="psychologicalName" name="psychological_option" class="form-control" min="20"
+                        max="79">
+
+                </div>
+            </div>
+            <!-- Pap Smear -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="neurologic" class="form-label required">PAP Smear</label>
+                    <select id="neurologic" name="neurologic" class="form-select" required onchange="neurologicType()">
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="neurologicType" style="display: none;">
+                    <label for="neurologicName" class="form-label required">When</label>
+                    <input type="date" id="neurologicName" name="neurologic_option" class="form-control" min="20"
+                        max="79">
+
+                </div>
+            </div>
+            <!-- Coronary Artery Disease-->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="cardiologic" class="form-label required">Ultrasound of Abdomen</label>
+                    <select id="cardiologic" name="cardiologic" class="form-select" required
+                        onchange="cardiologicType()">
+                        <option value="select">Select ...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="cardiologicType" style="display: none;">
+                    <label for="cardiologicName" class="form-label required">When</label>
+                    <input type="text" id="cardiologicName" name="cardiologic_option" class="form-control" min="20"
+                        max="79">
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <a href="PhysicalHealths.html"> Submit </a>
+            <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->
     </div>
-    <!-- Coronary Artery Disease-->
-    <div class="row g-3">
-      <div class="col-md-6">
-          <label for="cardiologic" class="form-label required">Ultrasound of Abdomen</label>
-          <select id="cardiologic" name="cardiologic" class="form-select" required onchange="cardiologicType()">
-              <option value="select">Select ...</option>
-              <option value="no">No</option>
-              <option value="yes">Yes</option>
-          </select>
-      </div>
-      <div class="col-md-6" id="cardiologicType" style="display: none;">
-          <label for="cardiologicName" class="form-label required">When</label>
-          <input type="text" id="cardiologicName" name="cardiologic_option" class="form-control" min="20" max="79">
-            
-      </div>
-  </div>
-    
-    
-    
-          
+    </form>
 
+    </div>
 
+    <script>
+        function medicationToggle() {
+            var medicationStatus = document.getElementById("medication").value;
+            var medicationDetails = document.getElementById("medicationDetails");
+            if (medicationStatus === "yes") {
+                medicationDetails.style.display = "block"; // Show the medication details input field
+            } else {
+                medicationDetails.style.display = "none"; // Hide the medication details input field
+            }
+        }
 
-  <a href="PhysicalHealths.html"> Submit </a>
-  <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->           </div>
-        </form>
+        function aspirinType() {
+            var aspirinStatus = document.getElementById("aspirin").value;
+            var aspirinTypeGroup = document.getElementById("aspirinType");
+            if (aspirinStatus === "yes") {
+                aspirinTypeGroup.style.display = "block"; // Show the additional question about taking Aspirin
+            } else {
+                aspirinTypeGroup.style.display = "none"; // Hide the additional question
+            }
+        }
 
-</div>
-    
-     <script>
- 
- 
- function medicationToggle() {
-    var medicationStatus = document.getElementById("medication").value;
-    var medicationDetails = document.getElementById("medicationDetails");
-    if (medicationStatus === "yes") {
-        medicationDetails.style.display = "block"; // Show the medication details input field
-    } else {
-        medicationDetails.style.display = "none"; // Hide the medication details input field
-    }
-}
-function aspirinType() {
-    var aspirinStatus = document.getElementById("aspirin").value;
-    var aspirinTypeGroup = document.getElementById("aspirinType");
-    if (aspirinStatus === "yes") {
-        aspirinTypeGroup.style.display = "block"; // Show the additional question about taking Aspirin
-    } else {
-        aspirinTypeGroup.style.display = "none"; // Hide the additional question
-    }
-}
-function otherMedsType() {
-    var otherMedsStatus = document.getElementById("otherMeds").value;
-    var otherMedsDetails = document.getElementById("otherMedsDetails");
-    if (otherMedsStatus === "yes") {
-        otherMedsDetails.style.display = "block"; // Show the input field for entering medication names
-    } else {
-        otherMedsDetails.style.display = "none"; // Hide the input field
-    }
-}
-function endocrineType() {
-    var endocrineStatus = document.getElementById("endocrine").value;
-    var endocrineTypeGroup = document.getElementById("endocrineType");
-    if (endocrineStatus === "yes") {
-        endocrineTypeGroup.style.display = "block"; // Show the endocrine problem options
-    } else {
-        endocrineTypeGroup.style.display = "none"; // Hide the endocrine problem options
-    }
-}
-function psychologicalType() {
-    var psychologicalStatus = document.getElementById("psychological").value;
-    var psychologicalTypeGroup = document.getElementById("psychologicalType");
-    if (psychologicalStatus === "yes") {
-        psychologicalTypeGroup.style.display = "block"; // Show the psychological problem options
-    } else {
-        psychologicalTypeGroup.style.display = "none"; // Hide the psychological problem options
-    }
-}
-function neurologicType() {
-    var neurologicStatus = document.getElementById("neurologic").value;
-    var neurologicTypeGroup = document.getElementById("neurologicType");
-    if (neurologicStatus === "yes") {
-        neurologicTypeGroup.style.display = "block"; // Show the neurologic problem options
-    } else {
-        neurologicTypeGroup.style.display = "none"; // Hide the neurologic problem options
-    }
-}
-function cardiologicType() {
-    var cardiologicStatus = document.getElementById("cardiologic").value;
-    var cardiologicTypeGroup = document.getElementById("cardiologicType");
-    if (cardiologicStatus === "yes") {
-        cardiologicTypeGroup.style.display = "block"; // Show the cardiologic problem options
-    } else {
-        cardiologicTypeGroup.style.display = "none"; // Hide the cardiologic problem options
-    }
-}
+        function otherMedsType() {
+            var otherMedsStatus = document.getElementById("otherMeds").value;
+            var otherMedsDetails = document.getElementById("otherMedsDetails");
+            if (otherMedsStatus === "yes") {
+                otherMedsDetails.style.display = "block"; // Show the input field for entering medication names
+            } else {
+                otherMedsDetails.style.display = "none"; // Hide the input field
+            }
+        }
 
+        function endocrineType() {
+            var endocrineStatus = document.getElementById("endocrine").value;
+            var endocrineTypeGroup = document.getElementById("endocrineType");
+            if (endocrineStatus === "yes") {
+                endocrineTypeGroup.style.display = "block"; // Show the endocrine problem options
+            } else {
+                endocrineTypeGroup.style.display = "none"; // Hide the endocrine problem options
+            }
+        }
 
+        function psychologicalType() {
+            var psychologicalStatus = document.getElementById("psychological").value;
+            var psychologicalTypeGroup = document.getElementById("psychologicalType");
+            if (psychologicalStatus === "yes") {
+                psychologicalTypeGroup.style.display = "block"; // Show the psychological problem options
+            } else {
+                psychologicalTypeGroup.style.display = "none"; // Hide the psychological problem options
+            }
+        }
 
+        function neurologicType() {
+            var neurologicStatus = document.getElementById("neurologic").value;
+            var neurologicTypeGroup = document.getElementById("neurologicType");
+            if (neurologicStatus === "yes") {
+                neurologicTypeGroup.style.display = "block"; // Show the neurologic problem options
+            } else {
+                neurologicTypeGroup.style.display = "none"; // Hide the neurologic problem options
+            }
+        }
 
+        function cardiologicType() {
+            var cardiologicStatus = document.getElementById("cardiologic").value;
+            var cardiologicTypeGroup = document.getElementById("cardiologicType");
+            if (cardiologicStatus === "yes") {
+                cardiologicTypeGroup.style.display = "block"; // Show the cardiologic problem options
+            } else {
+                cardiologicTypeGroup.style.display = "none"; // Hide the cardiologic problem options
+            }
+        }
+    </script>
+</body>
 
-     </script>
- </body>
- </html>
-
+</html>

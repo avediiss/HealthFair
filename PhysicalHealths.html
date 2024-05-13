@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <!-- Add KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 </head>
+
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Physical Healths</h1>
@@ -29,50 +31,50 @@
                     <label for="height" name="height" class="form-label required">BMI (kg/m²)</label>
                     <input type="number" name="height" id="height" class="form-control" required min="20" max="79">
                 </div>
-                </div>
-                <div class="row g-3">
+            </div>
+            <div class="row g-3">
                 <!-- Systolic BP -->
                 <div class="col-md-6">
-                    <label for="systolicBP" class="form-label required">Systolic Blood Pressure (mm Hg)  </label>
+                    <label for="systolicBP" class="form-label required">Systolic Blood Pressure (mm Hg) </label>
                     <select name="sbp" id="systolicBP" class="form-control" required min="90" max="200">
-                    <option value="">Select...</option>
-                    <option value="70">70</option>
-                    <option value="75">75</option>
-                    <option value="80">80</option>
-                    <option value="85">85</option>
-                    <option value="90">90</option>
-                    <option value="95">95</option>
-                    <option value="100">100</option>
-                    <option value="105">105</option>
-                    <option value="110">110</option>
-                    <option value="115">115</option>
-                    <option value="120">120</option>
-                    <option value="125">125</option>
-                    <option value="130">130</option>
-                    <option value="135">135</option>
-                    <option value="140">140</option>
-                    <option value="145">145</option>
-                    <option value="150">150</option>
-                    <option value="155">155</option>
-                    <option value="160">160</option>
-                    <option value="165">165</option>
-                    <option value="170">170</option>
-                    <option value="175">175</option>
-                    <option value="180">180</option>
-                    <option value="185">185</option>
-                    <option value="190">190</option>
-                    <option value="195">195</option>
-                    <option value="200">200</option>
-                    <option value="205">205</option>
-                    <option value="210">210</option>
-                    <option value="215">215</option>
-                    <option value="220">220</option>
-                    <option value="225">225</option>
+                        <option value="">Select...</option>
+                        <option value="70">70</option>
+                        <option value="75">75</option>
+                        <option value="80">80</option>
+                        <option value="85">85</option>
+                        <option value="90">90</option>
+                        <option value="95">95</option>
+                        <option value="100">100</option>
+                        <option value="105">105</option>
+                        <option value="110">110</option>
+                        <option value="115">115</option>
+                        <option value="120">120</option>
+                        <option value="125">125</option>
+                        <option value="130">130</option>
+                        <option value="135">135</option>
+                        <option value="140">140</option>
+                        <option value="145">145</option>
+                        <option value="150">150</option>
+                        <option value="155">155</option>
+                        <option value="160">160</option>
+                        <option value="165">165</option>
+                        <option value="170">170</option>
+                        <option value="175">175</option>
+                        <option value="180">180</option>
+                        <option value="185">185</option>
+                        <option value="190">190</option>
+                        <option value="195">195</option>
+                        <option value="200">200</option>
+                        <option value="205">205</option>
+                        <option value="210">210</option>
+                        <option value="215">215</option>
+                        <option value="220">220</option>
+                        <option value="225">225</option>
                     </select>
                 </div>
                 <!-- Diastolic BP -->
                 <div class="col-md-6">
-                    <label for="diastolicBP" class="form-label required">Diastolic Blood Pressure (mm Hg)  </label>
+                    <label for="diastolicBP" class="form-label required">Diastolic Blood Pressure (mm Hg) </label>
                     <select id="diastolicBP" name="dbp" class="form-control" required min="60" max="130">
                         <option value="">Select...</option>
                         <option value="40">40</option>
@@ -105,15 +107,17 @@
 
                 <!-- Total Cholesterol -->
                 <div class="col-md-6">
-                    <label for="totalCholesterol" class="form-label required">Total Cholesterol (mg/dL)  </label>
-                    <input type="number" id="totalCholesterol" name="chol" class="form-control" required min="130" max="320">
+                    <label for="totalCholesterol" class="form-label required">Total Cholesterol (mg/dL) </label>
+                    <input type="number" id="totalCholesterol" name="chol" class="form-control" required min="130"
+                        max="320">
                 </div>
                 <!-- HDL Cholesterol -->
                 <div class="col-md-6">
-                    <label for="hdlCholesterol" class="form-label required">HDL Cholesterol (mg/dL)  </label>
-                    <input type="number" id="hdlCholesterol" name="hdl" class="form-control" required min="20" max="100">
+                    <label for="hdlCholesterol" class="form-label required">HDL Cholesterol (mg/dL) </label>
+                    <input type="number" id="hdlCholesterol" name="hdl" class="form-control" required min="20"
+                        max="100">
                 </div>
-                
+
                 <!-- LDL Cholesterol -->
                 <div class="col-md-6">
                     <label for="ldlCholesterol" class="form-label required">LDL Cholesterol (mg/dL)</label>
@@ -124,36 +128,39 @@
                     <label for="hba1c" class="form-label required">HbA1c (%)</label>
                     <input type="number" id="hba1c" name="hba1c" class="form-control" min="30" max="300">
                 </div>
-                
-     
-            <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
+
+
+                <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
-      </div>
-</div>
-     <!-- Bootstrap 5 JS Bundle -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-     <!-- KaTeX JS for Math Rendering -->
-     <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
-     <script>
-         // Rendering Math Formulas with KaTeX
-         katex.render("ASCVD\\, Risk = 1 - 0.8990^{\\exp(\\beta \\times \\text{Factors} - \\text{Mean})}", document.getElementById('formula-men'));
-         katex.render("ASCVD\\, Risk = 1 - 0.9533^{\\exp(\\beta \\times \\text{Factors} - \\text{Mean})}", document.getElementById('formula-women'));
- 
-         // Existing JS for Form
-         function toggleQuitSmokingField() {
-             var smokerStatus = document.getElementById("smoker").value;
-             var quitSmokingGroup = document.getElementById("quitSmokingGroup");
-             if (smokerStatus === "former") {
-                 quitSmokingGroup.style.display = "block"; // Show the quit smoking field
-             } else {
-                 quitSmokingGroup.style.display = "none"; // Hide the quit smoking field
-             }
-         }
- 
-         // Call this function on page load to set the initial state
-         document.addEventListener('DOMContentLoaded', function() {
-             toggleQuitSmokingField();
-         });
-     </script>
- </body>
- </html>
+    </div>
+    </div>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- KaTeX JS for Math Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
+    <script>
+        // Rendering Math Formulas with KaTeX
+        katex.render("ASCVD\\, Risk = 1 - 0.8990^{\\exp(\\beta \\times \\text{Factors} - \\text{Mean})}", document
+            .getElementById('formula-men'));
+        katex.render("ASCVD\\, Risk = 1 - 0.9533^{\\exp(\\beta \\times \\text{Factors} - \\text{Mean})}", document
+            .getElementById('formula-women'));
+
+        // Existing JS for Form
+        function toggleQuitSmokingField() {
+            var smokerStatus = document.getElementById("smoker").value;
+            var quitSmokingGroup = document.getElementById("quitSmokingGroup");
+            if (smokerStatus === "former") {
+                quitSmokingGroup.style.display = "block"; // Show the quit smoking field
+            } else {
+                quitSmokingGroup.style.display = "none"; // Hide the quit smoking field
+            }
+        }
+
+        // Call this function on page load to set the initial state
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleQuitSmokingField();
+        });
+    </script>
+</body>
+
+</html>

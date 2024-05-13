@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,127 +10,127 @@
     <!-- Add KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 </head>
+
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Medication History</h1>
         <form id="ascvdForm" class="card card-body bg-white">
 
-          <!-- Medication -->
-          <div class="row g-3">
-            <div class="col-md-6">
-                <label for="medication" class="form-label required">Do you take any medications?</label>
-                <select id="medication" name="medication" class="form-select" required onchange="medicationToggle()">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+            <!-- Medication -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="medication" class="form-label required">Do you take any medications?</label>
+                    <select id="medication" name="medication" class="form-select" required
+                        onchange="medicationToggle()">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="medicationDetails" style="display: none;">
+                    <label for="medicationType" class="form-label required">What kind of medications?</label>
+                    <input type="text" id="medicationType" name="medicationType" class="form-control"
+                        placeholder="Enter medication names">
+                </div>
             </div>
-            <div class="col-md-6" id="medicationDetails" style="display: none;">
-                <label for="medicationType" class="form-label required">What kind of medications?</label>
-                <input type="text" id="medicationType" name="medicationType" class="form-control" placeholder="Enter medication names">
-            </div>
-        </div>
-        
 
-          <!-- Antihypertensives -->
-          <div class="row g-3">
-            <div class="col-md-6">
-                <label for="antihypertensives" class="form-label required">Antihypertensives</label>
-                <select id="antihypertensives" name="mutation" class="form-select" required>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+
+            <!-- Antihypertensives -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="antihypertensives" class="form-label required">Antihypertensives</label>
+                    <select id="antihypertensives" name="mutation" class="form-select" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
             </div>
-        </div>
-          <!-- Antilipidemic -->
-          <div class="row g-3">
-            <div class="col-md-6">
-                <label for="antilipidemic" class="form-label required">Antilipidemic</label>
-                <select id="antilipidemic" name="mutation" class="form-select" required>
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+            <!-- Antilipidemic -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="antilipidemic" class="form-label required">Antilipidemic</label>
+                    <select id="antilipidemic" name="mutation" class="form-select" required>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
             </div>
-        </div>
-         <!-- Aspirin -->
-         <div class="row g-3">
-          <div class="col-md-6">
-              <label for="aspirin" class="form-label required">Aspirin</label>
-              <select id="aspirin" name="aspirin" class="form-select" required onchange="aspirinType()">
-                  <option value="no">No</option>
-                  <option value="yes">Yes</option>
-              </select>
-          </div>
-          <div class="col-md-6" id="aspirinType" style="display: none;">
-              <label for="takenAspirin" class="form-label required">Taken over the past 30 days?</label>
-              <select id="takenAspirin" name="takenAspirin" class="form-select">
-                  <option value="no">No</option>
-                  <option value="yes">Yes</option>
-              </select>
-          </div>
-      </div>
-      <!-- Other Medications -->
-      <div class="row g-3">
-        <div class="col-md-6">
-            <label for="otherMeds" class="form-label required">Other Medications</label>
-            <select id="otherMeds" name="otherMeds" class="form-select" required onchange="otherMedsType()">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-            </select>
-        </div>
-        <div class="col-md-6" id="otherMedsDetails" style="display: none;">
-            <label for="medicationType" class="form-label required">What Medications?</label>
-            <input type="text" id="medicationType" name="medicationType" class="form-control" placeholder="Enter other medication names">
-        </div>
+            <!-- Aspirin -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="aspirin" class="form-label required">Aspirin</label>
+                    <select id="aspirin" name="aspirin" class="form-select" required onchange="aspirinType()">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="aspirinType" style="display: none;">
+                    <label for="takenAspirin" class="form-label required">Taken over the past 30 days?</label>
+                    <select id="takenAspirin" name="takenAspirin" class="form-select">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Other Medications -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="otherMeds" class="form-label required">Other Medications</label>
+                    <select id="otherMeds" name="otherMeds" class="form-select" required onchange="otherMedsType()">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="otherMedsDetails" style="display: none;">
+                    <label for="medicationType" class="form-label required">What Medications?</label>
+                    <input type="text" id="medicationType" name="medicationType" class="form-control"
+                        placeholder="Enter other medication names">
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <a href="ScreeningTests.html"> Submit </a>
+            <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->
     </div>
-    
- 
-    
-          
+    </form>
 
+    </div>
 
+    <script>
+        function medicationToggle() {
+            var medicationStatus = document.getElementById("medication").value;
+            var medicationDetails = document.getElementById("medicationDetails");
+            if (medicationStatus === "yes") {
+                medicationDetails.style.display = "block"; // Show the medication details input field
+            } else {
+                medicationDetails.style.display = "none"; // Hide the medication details input field
+            }
+        }
 
-    <a href="ScreeningTests.html"> Submit </a>
-    <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->           </div>
-        </form>
+        function aspirinType() {
+            var aspirinStatus = document.getElementById("aspirin").value;
+            var aspirinTypeGroup = document.getElementById("aspirinType");
+            if (aspirinStatus === "yes") {
+                aspirinTypeGroup.style.display = "block"; // Show the additional question about taking Aspirin
+            } else {
+                aspirinTypeGroup.style.display = "none"; // Hide the additional question
+            }
+        }
 
-</div>
-    
-     <script>
- 
- 
- function medicationToggle() {
-    var medicationStatus = document.getElementById("medication").value;
-    var medicationDetails = document.getElementById("medicationDetails");
-    if (medicationStatus === "yes") {
-        medicationDetails.style.display = "block"; // Show the medication details input field
-    } else {
-        medicationDetails.style.display = "none"; // Hide the medication details input field
-    }
-}
-function aspirinType() {
-    var aspirinStatus = document.getElementById("aspirin").value;
-    var aspirinTypeGroup = document.getElementById("aspirinType");
-    if (aspirinStatus === "yes") {
-        aspirinTypeGroup.style.display = "block"; // Show the additional question about taking Aspirin
-    } else {
-        aspirinTypeGroup.style.display = "none"; // Hide the additional question
-    }
-}
-function otherMedsType() {
-    var otherMedsStatus = document.getElementById("otherMeds").value;
-    var otherMedsDetails = document.getElementById("otherMedsDetails");
-    if (otherMedsStatus === "yes") {
-        otherMedsDetails.style.display = "block"; // Show the input field for entering medication names
-    } else {
-        otherMedsDetails.style.display = "none"; // Hide the input field
-    }
-}
+        function otherMedsType() {
+            var otherMedsStatus = document.getElementById("otherMeds").value;
+            var otherMedsDetails = document.getElementById("otherMedsDetails");
+            if (otherMedsStatus === "yes") {
+                otherMedsDetails.style.display = "block"; // Show the input field for entering medication names
+            } else {
+                otherMedsDetails.style.display = "none"; // Hide the input field
+            }
+        }
+    </script>
+</body>
 
-
-
-
-
-     </script>
- </body>
- </html>
-
+</html>

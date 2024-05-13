@@ -18,123 +18,57 @@
   <body class="bg-light">
     <div class="container py-5">
       <h1 class="mb-4 text-center">Demographics</h1>
-      <form id="ascvdForm" class="card card-body bg-white">
+      <form id="ascvdForm" class="card card-body bg-white" action="submit_form.php" method="POST">
         <div class="row g-3">
-          <!-- UID -->
+          <!-- UID and EID -->
           <div class="col-md-6">
-            <label for="uid" class="form-label"> Unique Identifier: </label>
-            <input
-              type="number"
-              name="uid"
-              id="uid"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="uid" class="form-label">Unique Identifier:</label>
+            <input type="number" name="uid" id="uid" class="form-control" />
           </div>
-          <!-- EID -->
           <div class="col-md-6">
-            <label for="eid" class="form-label"> Employee ID: </label>
-            <input
-              type="number"
-              name="eid"
-              id="eid"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="eid" class="form-label">Employee ID:</label>
+            <input type="number" name="eid" id="eid" class="form-control" />
           </div>
         </div>
         <div class="row g-3">
-          <!-- First Name -->
+          <!-- Name Fields -->
           <div class="col-md-6">
-            <label for="fname" class="form-label"> First Name: </label>
-            <input
-              type="text"
-              name="fname"
-              id="fname"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="fname" class="form-label">First Name:</label>
+            <input type="text" name="fname" id="fname" class="form-control" />
           </div>
-          <!--Father's Name-->
           <div class="col-md-6">
-            <label for="faname" class="form-label"> Father's Name: </label>
-            <input
-              type="text"
-              name="faname"
-              id="faname"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="faname" class="form-label">Father's Name:</label>
+            <input type="text" name="faname" id="faname" class="form-control" />
           </div>
         </div>
         <div class="row g-3">
-          <!-- Last Name -->
           <div class="col-md-6">
-            <label for="lname" class="form-label"> Last Name: </label>
-            <input
-              type="text"
-              name="lname"
-              id="lname"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="lname" class="form-label">Last Name:</label>
+            <input type="text" name="lname" id="lname" class="form-control" />
           </div>
-          <!--Mother's Name-->
           <div class="col-md-6">
-            <label for="moname" class="form-label"> Mother's Name: </label>
-            <input
-              type="text"
-              name="moname"
-              id="moname"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="moname" class="form-label">Mother's Name:</label>
+            <input type="text" name="moname" id="moname" class="form-control" />
           </div>
         </div>
         <div class="row g-3">
-          <label for="epemail" class="form-label"> Employee Email: </label>
-          <input
-            type="text"
-            name="epemail"
-            id="epemail"
-            class="form-control"
-            min="20"
-            max="79"
-          />
-        </div>
-        <div class="row g-3">
-          <label for="pnum" class="form-label"> Phone Number: </label>
-          <input
-            type="pnum"
-            name="pnum"
-            id="pnum"
-            class="form-control"
-            min="20"
-            max="79"
-          />
-        </div>
-        <div class="row g-3">
-          <!-- Age -->
           <div class="col-md-6">
-            <label for="age" class="form-label"> Age </label>
-            <input
-              type="number"
-              name="age"
-              id="age"
-              class="form-control"
-              min="20"
-              max="79"
-            />
+            <label for="epemail" class="form-label">Employee Email:</label>
+            <input type="email" name="epemail" id="epemail" class="form-control" />
           </div>
-          <!-- Sex -->
           <div class="col-md-6">
-            <label for="sex" name="sex" class="form-label">Sex </label>
+            <label for="pnum" class="form-label">Phone Number:</label>
+            <input type="tel" name="pnum" id="pnum" class="form-control" />
+          </div>
+        </div>
+        <div class="row g-3">
+          <!-- Age and Sex -->
+          <div class="col-md-6">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" name="age" id="age" class="form-control" />
+          </div>
+          <div class="col-md-6">
+            <label for="sex" class="form-label">Sex:</label>
             <select id="sex" name="sex" class="form-select">
               <option value="select">Select...</option>
               <option value="male">Male</option>
@@ -143,9 +77,9 @@
           </div>
         </div>
         <div class="row g-3">
-          <!-- Race -->
+          <!-- Race and Education -->
           <div class="col-md-6">
-            <label for="race" class="form-label">Race </label>
+            <label for="race" class="form-label">Race:</label>
             <select id="race" name="race" class="form-select">
               <option value="select">Select...</option>
               <option value="white">White</option>
@@ -154,33 +88,22 @@
             </select>
           </div>
           <div class="col-md-6">
-            <label for="education" class="form-label">Education </label>
+            <label for="education" class="form-label">Education:</label>
             <select id="education" name="education" class="form-select">
-              <option value="">Select...</option>
-              <option value="Less than high school">
-                Less than high school
-              </option>
-              <option value="Hight school graduate">
-                Hight school graduate
-              </option>
-              <option value="Some training after high school">
-                Some training after high school
-              </option>
-              <option value="Some college">Some college</option>
-              <option value="College graduate">College graduate</option>
-              <option value="Postgraduate or professional degree">
-                Postgraduate or professional degree
-              </option>
+              <option value="select">Select...</option>
+              <option value="lessThanHighSchool">Less than high school</option>
+              <option value="highSchoolGraduate">High school graduate</option>
+              <option value="someTrainingAfterHighSchool">Some training after high school</option>
+              <option value="someCollege">Some college</option>
+              <option value="collegeGraduate">College graduate</option>
+              <option value="postgraduateOrProfessionalDegree">Postgraduate or professional degree</option>
             </select>
           </div>
         </div>
-        <br />
-        <a href="LifestyleBehavior.html"> Submit </a>
-        <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->
+        <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
       </form>
     </div>
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- KaTeX JS for Math Rendering -->
   </body>
 </html>

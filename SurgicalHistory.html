@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,90 +10,73 @@
     <!-- Add KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 </head>
+
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Surgical History</h1>
         <form id="ascvdForm" class="card card-body bg-white">
 
-          <!-- Urinary -->
-          <div class="row g-3">
-            <div class="col-md-6">
-                <label for="surgery" class="form-label required">Did you undergo any surgeries?</label>
-                <select id="surgery" name="surgery" class="form-select" required onchange="toggleSurgeryDetails()">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </div>
-            <div class="col-md-6" id="surgeryDetails" style="display: none;">
-                <label for="surgeryType" class="form-label required">Select the following:</label>
-                <select id="surgeryType" name="surgeryType" class="form-select" onchange="showUTIDetails()">
-                    <option value="">Select</option>
-                    <option value="uti">Cardio Vascular</option>
-                    <option value="chronickidney">Gastrointestinal</option>
-                    <option value="other">Other</option>
-                </select>
-        
-                <div id="utiDetails" style="display: none;">
-                    <label for="utiOptions" class="form-label">UTI Details:</label>
-                    <select id="utiOptions" name="utiOptions" class="form-select">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
+            <!-- Urinary -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="surgery" class="form-label required">Did you undergo any surgeries?</label>
+                    <select id="surgery" name="surgery" class="form-select" required onchange="toggleSurgeryDetails()">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
                     </select>
                 </div>
+                <div class="col-md-6" id="surgeryDetails" style="display: none;">
+                    <label for="surgeryType" class="form-label required">Select the following:</label>
+                    <select id="surgeryType" name="surgeryType" class="form-select" onchange="showUTIDetails()">
+                        <option value="">Select</option>
+                        <option value="uti">Cardio Vascular</option>
+                        <option value="chronickidney">Gastrointestinal</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <div id="utiDetails" style="display: none;">
+                        <label for="utiOptions" class="form-label">UTI Details:</label>
+                        <select id="utiOptions" name="utiOptions" class="form-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
-        
-
-  
-   
-   
-  
- 
-   
- 
-  
-
-    
-          
 
 
 
-        <a href="MedicationsHistory.html"> Submit </a>
-        <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->           </div>
-        </form>
+            <a href="MedicationsHistory.html"> Submit </a>
+            <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->
+    </div>
+    </form>
 
-</div>
-    
-     <script>
- 
- 
- function toggleSurgeryDetails() {
-    var surgeryStatus = document.getElementById("surgery").value;
-    var surgeryDetails = document.getElementById("surgeryDetails");
-    if (surgeryStatus === "yes") {
-        surgeryDetails.style.display = "block"; // Show the secondary select
-    } else {
-        surgeryDetails.style.display = "none"; // Hide the secondary select and reset it
-        document.getElementById("surgeryType").value = "";
-        showUTIDetails(); // Reset the UTI details if hidden
-    }
-}
+    </div>
 
-function showUTIDetails() {
-    var surgeryType = document.getElementById("surgeryType").value;
-    var utiDetails = document.getElementById("utiDetails");
-    if (surgeryType === "uti") {
-        utiDetails.style.display = "block"; // Show the UTI details options
-    } else {
-        utiDetails.style.display = "none"; // Hide the UTI details options
-    }
-}
+    <script>
+        function toggleSurgeryDetails() {
+            var surgeryStatus = document.getElementById("surgery").value;
+            var surgeryDetails = document.getElementById("surgeryDetails");
+            if (surgeryStatus === "yes") {
+                surgeryDetails.style.display = "block"; // Show the secondary select
+            } else {
+                surgeryDetails.style.display = "none"; // Hide the secondary select and reset it
+                document.getElementById("surgeryType").value = "";
+                showUTIDetails(); // Reset the UTI details if hidden
+            }
+        }
 
+        function showUTIDetails() {
+            var surgeryType = document.getElementById("surgeryType").value;
+            var utiDetails = document.getElementById("utiDetails");
+            if (surgeryType === "uti") {
+                utiDetails.style.display = "block"; // Show the UTI details options
+            } else {
+                utiDetails.style.display = "none"; // Hide the UTI details options
+            }
+        }
+    </script>
+</body>
 
-
-
-     </script>
- </body>
- </html>
-
+</html>
