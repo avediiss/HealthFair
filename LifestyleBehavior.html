@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Style Behavior</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Add KaTeX CSS for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4 text-center">Life Style Behavior</h1>
+        <form id="ascvdForm" class="card card-body bg-white">
+            <div class="row g-3">
+               <!-- Aspirin -->
+         <div class="row g-3">
+            <div class="col-md-6">
+                <label for="aspirin" class="form-label required">Exercise</label>
+                <select id="aspirin" name="aspirin" class="form-select" required onchange="aspirinType()">
+                    <option value="noactivity">No Activty</option>
+                    <option value="lightactivity">Light Activity</option>
+                    <option value="modestactivity">Modest Activity</option>
+                    <option value="highintensity">High intensity</option>
+                </select>
+            </div>
+            <div class="col-md-6" id="aspirinType" style="display: none;">
+                <label for="takenAspirin" class="form-label required">Taken over the past 30 days?</label>
+                <select id="takenAspirin" name="takenAspirin" class="form-select">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+        </div>
+                <!-- Systolic BP -->
+                <div class="col-md-6">
+                    <label for="systolicBP" class="form-label required">Vegetables Servings per Week </label>
+                    <input type="number" name="sbp" id="systolicBP" class="form-control" required min="90" max="200">
+                </div>
+                <!-- Diastolic BP -->
+                <div class="col-md-6">
+                    <label for="diastolicBP" class="form-label required">Real Meat Servings per Week </label>
+                    <input type="number" id="diastolicBP" name="dbp" class="form-control" required min="60" max="130">
+                </div>
+                 <!-- Medication -->
+          <div class="row g-3">
+            <div class="col-md-6">
+                <label for="medication" class="form-label required">Drinks alcohol</label>
+                <select id="medication" name="medication" class="form-select" required onchange="medicationToggle()">
+                    <option value="select">Select</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+            <div class="col-md-6" id="medicationDetails" style="display: none;">
+                <label for="medicationType" class="form-label required">How many drinks per week?</label>
+                <input type="text" id="medicationType" name="medicationType" class="form-control">
+            </div>
+        </div>
+        <div class="row g-3">
+
+                <!-- Smoker -->
+                <div class="col-md-6">
+                  <label for="smoker" class="form-label required">Smoker? </label>
+                  <select id="smoker" name="smoke" class="form-select" required onchange="toggleQuitSmokingField()">
+                    <option value="never">Never</option>
+                      <option value="current">Current</option>
+                      <option value="former">Former</option>
+                      
+                  </select>
+              </div>
+              <!-- Quit Smoking Group -->
+              <div class="col-md-6" id="quitSmokingGroup" style="display: none;">
+                  <label for="quitSmoking" class="form-label required">How long ago did patient quit smoking? </label>
+                  <select id="quitSmoking" name="quit" class="form-select">
+                      <option value="">Select</option>
+                      <option value="unknown">Unknown</option>
+                      <option value="lessThan6Months">Less than 6 months ago</option>
+                      <option value="6MonthsTo1_5Years">6 months-1.5 years ago</option>
+                      <option value="1_5To2_5Years">1.5-2.5 years ago</option>
+                      <option value="2_5To3_5Years">2.5-3.5 years ago</option>
+                      <option value="3_5To5Years">3.5-5 years ago</option>
+                      <option value="moreThan5Years">More than 5 years ago</option>
+                  </select>
+              </div>
+           
+
+            </div>
+            <a href="FamilyHistory.html"> Submit </a>
+            <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->         </form>
+  
+</div>
+     <!-- Bootstrap 5 JS Bundle -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- KaTeX JS for Math Rendering -->
+     <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
+     <script>
+       
+         // Existing JS for Form
+         function toggleQuitSmokingField() {
+             var smokerStatus = document.getElementById("smoker").value;
+             var quitSmokingGroup = document.getElementById("quitSmokingGroup");
+             if (smokerStatus === "former") {
+                 quitSmokingGroup.style.display = "block"; // Show the quit smoking field
+             } else {
+                 quitSmokingGroup.style.display = "none"; // Hide the quit smoking field
+             }
+         }
+ 
+         // Call this function on page load to set the initial state
+         document.addEventListener('DOMContentLoaded', function() {
+             toggleQuitSmokingField();
+         });
+
+         function medicationToggle() {
+            var medicationStatus = document.getElementById("medication").value;
+            var medicationDetails = document.getElementById("medicationDetails");
+            if (medicationStatus === "yes") {
+                medicationDetails.style.display = "block"; // Show the medication details input field
+            } else {
+                medicationDetails.style.display = "none"; // Hide the medication details input field
+            }
+        }
+        function aspirinType() {
+            var aspirinStatus = document.getElementById("aspirin").value;
+            var aspirinTypeGroup = document.getElementById("aspirinType");
+            if (aspirinStatus === "Modest activity") {
+                aspirinTypeGroup.style.display = "block"; // Show the additional question about taking Aspirin
+            } else {
+                aspirinTypeGroup.style.display = "none"; // Hide the additional question
+            }
+        }
+     </script>
+ </body>
+ </html>
