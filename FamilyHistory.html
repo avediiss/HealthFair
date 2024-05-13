@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,215 +9,136 @@
     <!-- Add KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
 </head>
-
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Family History</h1>
         <form id="ascvdForm" class="card card-body bg-white">
-
             <!-- Colorectal Cancer -->
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="urinary" class="form-label required">Colorectal Cancer</label>
-                    <select id="urinary" name="urinary" class="form-select" required onchange="urinarytract()">
+                    <label for="colorectalCancer" class="form-label required">Colorectal Cancer:</label>
+                    <select id="colorectalCancer" name="colorectalCancer" class="form-select" required onchange="colorectalCancerType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="urinarytract" style="display: none;">
-                    <label for="urinaryproblem" class="form-label required">At what age</label>
-                    <input type="text" id="urinaryproblem" name="endocrine_option" class="form-control" min="20"
-                        max="79">
-
+                <div class="col-md-6" id="colorectalCancerType" style="display: none;">
+                    <label for="colorectalAge" class="form-label required">At what age:</label>
+                    <input type="text" id="colorectalAge" name="colorectalAge" class="form-control">
                 </div>
             </div>
 
             <!-- Breast Cancer -->
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="cancer" class="form-label required">Breast Cancer</label>
-                    <select id="cancer" name="cancer" class="form-select" required onchange="cancerType()">
+                    <label for="breastCancer" class="form-label required">Breast Cancer:</label>
+                    <select id="breastCancer" name="breastCancer" class="form-select" required onchange="breastCancerType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="cancerType" style="display: none;">
-                    <label for="cancerName" class="form-label required">How many sibilings:</label>
-                    <input type="text" id="cancerName" name="quit" class="form-control" min="20" max="79">
-                    <label for="cancerName" class="form-label required">What is the age of the youngest
-                        sibiling:</label>
-                    <input type="text" id="cancerName" name="quit" class="form-control" min="20" max="79">
-
+                <div class="col-md-6" id="breastCancerType" style="display: none;">
+                    <label for="breastSiblings" class="form-label required">How many siblings:</label>
+                    <input type="number" id="breastSiblings" name="breastSiblings" class="form-control">
+                    <label for="youngestSiblingAge" class="form-label required">Age of youngest sibling:</label>
+                    <input type="number" id="youngestSiblingAge" name="youngestSiblingAge" class="form-control">
                 </div>
             </div>
 
-            <!-- Lung Cancer-->
+            <!-- Lung Cancer -->
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="endocrine" class="form-label required">Lung Cancer</label>
-                    <select id="endocrine" name="endocrine" class="form-select" required onchange="endocrineType()">
+                    <label for="lungCancer" class="form-label required">Lung Cancer:</label>
+                    <select id="lungCancer" name="lungCancer" class="form-select" required onchange="lungCancerType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="endocrineType" style="display: none;">
-                    <label for="endocrineName" class="form-label required">At what age</label>
-                    <input type="text" id="endocrineName" name="endocrine_option" class="form-control" min="20"
-                        max="79">
-
+                <div class="col-md-6" id="lungCancerType" style="display: none;">
+                    <label for="lungCancerAge" class="form-label required">At what age:</label>
+                    <input type="number" id="lungCancerAge" name="lungCancerAge" class="form-control">
                 </div>
             </div>
 
-            <!--Prostate Cancer-->
+            <!-- Prostate Cancer -->
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="psychological" class="form-label required">Prostate Cancer:</label>
-                    <select id="psychological" name="psychological" class="form-select" required
-                        onchange="psychologicalType()">
+                    <label for="prostateCancer" class="form-label required">Prostate Cancer:</label>
+                    <select id="prostateCancer" name="prostateCancer" class="form-select" required onchange="prostateCancerType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="psychologicalType" style="display: none;">
-                    <label for="psychologicalName" class="form-label required">At what age</label>
-                    <input type="text" id="psychologicalName" name="psychological_option" class="form-control" min="20"
-                        max="79">
-
+                <div class="col-md-6" id="prostateCancerType" style="display: none;">
+                    <label for="prostateCancerAge" class="form-label required">At what age:</label>
+                    <input type="number" id="prostateCancerAge" name="prostateCancerAge" class="form-control">
                 </div>
             </div>
+
             <!-- Abdominal Aortic Aneurysm -->
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="neurologic" class="form-label required">Abdominal Aortic Aneurysm</label>
-                    <select id="neurologic" name="neurologic" class="form-select" required onchange="neurologicType()">
+                    <label for="abdominalAneurysm" class="form-label required">Abdominal Aortic Aneurysm:</label>
+                    <select id="abdominalAneurysm" name="abdominalAneurysm" class="form-select" required onchange="abdominalAneurysmType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="neurologicType" style="display: none;">
-                    <label for="neurologicName" class="form-label required">At what age</label>
-                    <input type="text" id="neurologicName" name="neurologic_option" class="form-control" min="20"
-                        max="79">
-
+                <div class="col-md-6" id="abdominalAneurysmType" style="display: none;">
+                    <label for="aneurysmAge" class="form-label required">At what age:</label>
+                    <input type="number" id="aneurysmAge" name="aneurysmAge" class="form-control">
                 </div>
             </div>
-            <!-- Coronary Artery Disease-->
+
+            <!-- Coronary Artery Disease -->
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="cardiologic" class="form-label required">Coronary Artery Disease</label>
-                    <select id="cardiologic" name="cardiologic" class="form-select" required
-                        onchange="cardiologicType()">
+                    <label for="coronaryDisease" class="form-label required">Coronary Artery Disease:</label>
+                    <select id="coronaryDisease" name="coronaryDisease" class="form-select" required onchange="coronaryDiseaseType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="cardiologicType" style="display: none;">
-                    <label for="cardiologicName" class="form-label required">At what age</label>
-                    <input type="text" id="cardiologicName" name="cardiologic_option" class="form-control" min="20"
-                        max="79">
-
+                <div class="col-md-6" id="coronaryDiseaseType" style="display: none;">
+                    <label for="coronaryDiseaseAge" class="form-label required">At what age:</label>
+                    <input type="number" id="coronaryDiseaseAge" name="coronaryDiseaseAge" class="form-control">
                 </div>
             </div>
-
-
-            <a href="MedicalHistory.html"> Submit </a>
-            <!-- <button href="MedicalHistory.html" type="submit" name="submit" class="btn btn-primary mt-3">Submit</button> -->
-    </div>
-    </form>
-
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
     </div>
 
     <script>
-        function urinarytract() {
-            var urinaryStatus = document.getElementById("urinary").value;
-            var urinarytractGroup = document.getElementById("urinarytract");
-            if (urinaryStatus === "yes") {
-                urinarytractGroup.style.display = "block"; // Show the urinary tract problem options
-            } else {
-                urinarytractGroup.style.display = "none"; // Hide the urinary tract problem options
-            }
+        function colorectalCancerType() {
+            var displayStatus = document.getElementById("colorectalCancer").value;
+            document.getElementById("colorectalCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-
-        function cancerType() {
-            var cancerStatus = document.getElementById("cancer").value;
-            var cancerTypeGroup = document.getElementById("cancerType");
-            if (cancerStatus === "yes") {
-                cancerTypeGroup.style.display = "block"; // Show the cancer type selection
-            } else {
-                cancerTypeGroup.style.display = "none"; // Hide the cancer type selection
-            }
+        
+        function breastCancerType() {
+            var displayStatus = document.getElementById("breastCancer").value;
+            document.getElementById("breastCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-
-        function endocrineType() {
-            var endocrineStatus = document.getElementById("endocrine").value;
-            var endocrineTypeGroup = document.getElementById("endocrineType");
-            if (endocrineStatus === "yes") {
-                endocrineTypeGroup.style.display = "block"; // Show the endocrine problem options
-            } else {
-                endocrineTypeGroup.style.display = "none"; // Hide the endocrine problem options
-            }
+        
+        function lungCancerType() {
+            var displayStatus = document.getElementById("lungCancer").value;
+            document.getElementById("lungCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-
-        function psychologicalType() {
-            var psychologicalStatus = document.getElementById("psychological").value;
-            var psychologicalTypeGroup = document.getElementById("psychologicalType");
-            if (psychologicalStatus === "yes") {
-                psychologicalTypeGroup.style.display = "block"; // Show the psychological problem options
-            } else {
-                psychologicalTypeGroup.style.display = "none"; // Hide the psychological problem options
-            }
+        
+        function prostateCancerType() {
+            var displayStatus = document.getElementById("prostateCancer").value;
+            document.getElementById("prostateCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-
-        function neurologicType() {
-            var neurologicStatus = document.getElementById("neurologic").value;
-            var neurologicTypeGroup = document.getElementById("neurologicType");
-            if (neurologicStatus === "yes") {
-                neurologicTypeGroup.style.display = "block"; // Show the neurologic problem options
-            } else {
-                neurologicTypeGroup.style.display = "none"; // Hide the neurologic problem options
-            }
+        
+        function abdominalAneurysmType() {
+            var displayStatus = document.getElementById("abdominalAneurysm").value;
+            document.getElementById("abdominalAneurysmType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-
-        function cardiologicType() {
-            var cardiologicStatus = document.getElementById("cardiologic").value;
-            var cardiologicTypeGroup = document.getElementById("cardiologicType");
-            if (cardiologicStatus === "yes") {
-                cardiologicTypeGroup.style.display = "block"; // Show the cardiologic problem options
-            } else {
-                cardiologicTypeGroup.style.display = "none"; // Hide the cardiologic problem options
-            }
+        
+        function coronaryDiseaseType() {
+            var displayStatus = document.getElementById("coronaryDisease").value;
+            document.getElementById("coronaryDiseaseType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-
-        function gastroType() {
-            var gastroStatus = document.getElementById("gastro").value;
-            var gastroTypeGroup = document.getElementById("gastroType");
-            if (gastroStatus === "yes") {
-                gastroTypeGroup.style.display = "block"; // Show the gastroenterological problem options
-            } else {
-                gastroTypeGroup.style.display = "none"; // Hide the gastroenterological problem options
-            }
-        }
-
-        function pulmonaryType() {
-            var pulmonaryStatus = document.getElementById("pulmonary").value;
-            var pulmonaryTypeGroup = document.getElementById("pulmonaryType");
-            if (pulmonaryStatus === "yes") {
-                pulmonaryTypeGroup.style.display = "block"; // Show the pulmonary problem options
-            } else {
-                pulmonaryTypeGroup.style.display = "none"; // Hide the pulmonary problem options
-            }
-        }
-
-        function musculoskeletalType() {
-            var musculoskeletalStatus = document.getElementById("musculoskeletal").value;
-            var musculoskeletalTypeGroup = document.getElementById("musculoskeletalType");
-            if (musculoskeletalStatus === "yes") {
-                musculoskeletalTypeGroup.style.display = "block"; // Show the musculoskeletal problem options
-            } else {
-                musculoskeletalTypeGroup.style.display = "none"; // Hide the musculoskeletal problem options
-            }
-        }
-    </script>
+        </script>
+        
 </body>
-
 </html>

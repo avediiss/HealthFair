@@ -17,17 +17,18 @@
         <form id="ascvdForm" class="card card-body bg-white">
 
             <!-- Urinary -->
-            <div class="row g-3">
+             <!-- Urinary -->
+             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="urinary" class="form-label required">Do you have a urinary tract problem?</label>
-                    <select id="urinary" name="urinary" class="form-select" required onchange="urinarytract()">
+                    <select id="urinary" name="urinary" class="form-select" required onchange="toggleUrinaryTract()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <div class="col-md-6" id="urinarytract" style="display: none;">
-                    <label for="urinaryproblem" class="form-label required">Select the following</label>
-                    <select id="urinaryproblem" name="quit" class="form-select">
+                <div class="col-md-6" id="urinaryTractDetails" style="display: none;">
+                    <label for="urinaryProblem" class="form-label required">Select the following</label>
+                    <select id="urinaryProblem" name="urinaryProblem" class="form-select">
                         <option value="">Select</option>
                         <option value="uti">UTI - 1D85</option>
                         <option value="chronickidney">Chronic kidney disease</option>
@@ -35,6 +36,7 @@
                     </select>
                 </div>
             </div>
+
 
             <!-- Cancer -->
             <div class="row g-3">
@@ -244,107 +246,58 @@
     </div>
 
     <script>
-        // Existing JS for Form
         function toggleQuitSmokingField() {
             var smokerStatus = document.getElementById("smoker").value;
             var quitSmokingGroup = document.getElementById("quitSmokingGroup");
-            if (smokerStatus === "former") {
-                quitSmokingGroup.style.display = "block"; // Show the quit smoking field
-            } else {
-                quitSmokingGroup.style.display = "none"; // Hide the quit smoking field
-            }
+            quitSmokingGroup.style.display = (smokerStatus === "former") ? "block" : "none";
         }
-
-        function urinarytract() {
+    
+        function toggleUrinaryTract() {
             var urinaryStatus = document.getElementById("urinary").value;
-            var urinarytractGroup = document.getElementById("urinarytract");
-            if (urinaryStatus === "yes") {
-                urinarytractGroup.style.display = "block"; // Show the urinary tract problem options
-            } else {
-                urinarytractGroup.style.display = "none"; // Hide the urinary tract problem options
-            }
+            document.getElementById("urinaryTractDetails").style.display = (urinaryStatus === "yes") ? "block" : "none";
         }
-
-        function cancerType() {
+    
+        function toggleCancerType() {
             var cancerStatus = document.getElementById("cancer").value;
-            var cancerTypeGroup = document.getElementById("cancerType");
-            if (cancerStatus === "yes") {
-                cancerTypeGroup.style.display = "block"; // Show the cancer type selection
-            } else {
-                cancerTypeGroup.style.display = "none"; // Hide the cancer type selection
-            }
+            document.getElementById("cancerType").style.display = (cancerStatus === "yes") ? "block" : "none";
         }
-
-        function endocrineType() {
+    
+        function toggleEndocrineType() {
             var endocrineStatus = document.getElementById("endocrine").value;
-            var endocrineTypeGroup = document.getElementById("endocrineType");
-            if (endocrineStatus === "yes") {
-                endocrineTypeGroup.style.display = "block"; // Show the endocrine problem options
-            } else {
-                endocrineTypeGroup.style.display = "none"; // Hide the endocrine problem options
-            }
+            document.getElementById("endocrineType").style.display = (endocrineStatus === "yes") ? "block" : "none";
         }
-
-        function psychologicalType() {
+    
+        function togglePsychologicalType() {
             var psychologicalStatus = document.getElementById("psychological").value;
-            var psychologicalTypeGroup = document.getElementById("psychologicalType");
-            if (psychologicalStatus === "yes") {
-                psychologicalTypeGroup.style.display = "block"; // Show the psychological problem options
-            } else {
-                psychologicalTypeGroup.style.display = "none"; // Hide the psychological problem options
-            }
+            document.getElementById("psychologicalType").style.display = (psychologicalStatus === "yes") ? "block" : "none";
         }
-
-        function neurologicType() {
+    
+        function toggleNeurologicType() {
             var neurologicStatus = document.getElementById("neurologic").value;
-            var neurologicTypeGroup = document.getElementById("neurologicType");
-            if (neurologicStatus === "yes") {
-                neurologicTypeGroup.style.display = "block"; // Show the neurologic problem options
-            } else {
-                neurologicTypeGroup.style.display = "none"; // Hide the neurologic problem options
-            }
+            document.getElementById("neurologicType").style.display = (neurologicStatus === "yes") ? "block" : "none";
         }
-
-        function cardiologicType() {
+    
+        function toggleCardiologicType() {
             var cardiologicStatus = document.getElementById("cardiologic").value;
-            var cardiologicTypeGroup = document.getElementById("cardiologicType");
-            if (cardiologicStatus === "yes") {
-                cardiologicTypeGroup.style.display = "block"; // Show the cardiologic problem options
-            } else {
-                cardiologicTypeGroup.style.display = "none"; // Hide the cardiologic problem options
-            }
+            document.getElementById("cardiologicType").style.display = (cardiologicStatus === "yes") ? "block" : "none";
         }
-
-        function gastroType() {
+    
+        function toggleGastroType() {
             var gastroStatus = document.getElementById("gastro").value;
-            var gastroTypeGroup = document.getElementById("gastroType");
-            if (gastroStatus === "yes") {
-                gastroTypeGroup.style.display = "block"; // Show the gastroenterological problem options
-            } else {
-                gastroTypeGroup.style.display = "none"; // Hide the gastroenterological problem options
-            }
+            document.getElementById("gastroType").style.display = (gastroStatus === "yes") ? "block" : "none";
         }
-
-        function pulmonaryType() {
+    
+        function togglePulmonaryType() {
             var pulmonaryStatus = document.getElementById("pulmonary").value;
-            var pulmonaryTypeGroup = document.getElementById("pulmonaryType");
-            if (pulmonaryStatus === "yes") {
-                pulmonaryTypeGroup.style.display = "block"; // Show the pulmonary problem options
-            } else {
-                pulmonaryTypeGroup.style.display = "none"; // Hide the pulmonary problem options
-            }
+            document.getElementById("pulmonaryType").style.display = (pulmonaryStatus === "yes") ? "block" : "none";
         }
-
-        function musculoskeletalType() {
+    
+        function toggleMusculoskeletalType() {
             var musculoskeletalStatus = document.getElementById("musculoskeletal").value;
-            var musculoskeletalTypeGroup = document.getElementById("musculoskeletalType");
-            if (musculoskeletalStatus === "yes") {
-                musculoskeletalTypeGroup.style.display = "block"; // Show the musculoskeletal problem options
-            } else {
-                musculoskeletalTypeGroup.style.display = "none"; // Hide the musculoskeletal problem options
-            }
+            document.getElementById("musculoskeletalType").style.display = (musculoskeletalStatus === "yes") ? "block" : "none";
         }
     </script>
+    
 </body>
 
 </html>
