@@ -6,33 +6,45 @@
     <title>Family History</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Add KaTeX CSS for Math Rendering -->
+    <!-- KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    <style>
+        .form-label {
+            font-weight: bold;
+        }
+        .form-container {
+            padding: 30px;
+        }
+    </style>
 </head>
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Family History</h1>
-        <form id="ascvdForm" class="card card-body bg-white">
+        <form id="ascvdForm" class="card card-body bg-white shadow-sm form-container">
             <!-- Colorectal Cancer -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="colorectalCancer" class="form-label required">Colorectal Cancer:</label>
                     <select id="colorectalCancer" name="colorectalCancer" class="form-select" required onchange="colorectalCancerType()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="colorectalCancerType" style="display: none;">
                     <label for="colorectalAge" class="form-label required">At what age:</label>
-                    <input type="text" id="colorectalAge" name="colorectalAge" class="form-control">
+                    <input type="number" id="colorectalAge" name="colorectalAge" class="form-control">
                 </div>
             </div>
 
             <!-- Breast Cancer -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="breastCancer" class="form-label required">Breast Cancer:</label>
                     <select id="breastCancer" name="breastCancer" class="form-select" required onchange="breastCancerType()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -46,10 +58,12 @@
             </div>
 
             <!-- Lung Cancer -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="lungCancer" class="form-label required">Lung Cancer:</label>
                     <select id="lungCancer" name="lungCancer" class="form-select" required onchange="lungCancerType()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -61,25 +75,31 @@
             </div>
 
             <!-- Prostate Cancer -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="prostateCancer" class="form-label required">Prostate Cancer:</label>
                     <select id="prostateCancer" name="prostateCancer" class="form-select" required onchange="prostateCancerType()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="prostateCancerType" style="display: none;">
-                    <label for="prostateCancerAge" class="form-label required">At what age:</label>
-                    <input type="number" id="prostateCancerAge" name="prostateCancerAge" class="form-control">
+                    <label for="prostateSiblings" class="form-label required">How many siblings: (Father and/or Brother)</label>
+                    <input type="number" id="prostateSiblings" name="prostateSiblings" class="form-control">
+                    <label for="youngestSiblingAge" class="form-label required">Age of youngest sibling:</label>
+                    <input type="number" id="youngestSiblingAge" name="youngestSiblingAge" class="form-control">
                 </div>
             </div>
 
             <!-- Abdominal Aortic Aneurysm -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="abdominalAneurysm" class="form-label required">Abdominal Aortic Aneurysm:</label>
                     <select id="abdominalAneurysm" name="abdominalAneurysm" class="form-select" required onchange="abdominalAneurysmType()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -91,20 +111,29 @@
             </div>
 
             <!-- Coronary Artery Disease -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="coronaryDisease" class="form-label required">Coronary Artery Disease:</label>
                     <select id="coronaryDisease" name="coronaryDisease" class="form-select" required onchange="coronaryDiseaseType()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="coronaryDiseaseType" style="display: none;">
-                    <label for="coronaryDiseaseAge" class="form-label required">At what age:</label>
-                    <input type="number" id="coronaryDiseaseAge" name="coronaryDiseaseAge" class="form-control">
+                    <label for="coronaryDiseaseAge" class="form-label required"> - :</label>
+                    <select id="coronaryDiseaseAge" name="coronaryDiseaseAge" class="form-select">
+                        <option value="select">Select...</option>
+
+                        <option value="men">Men<55</option>
+                        <option value="women">Women<55</option>
+                    </select>
                 </div>
             </div>
-            <a href="MedicalHistory.html" class="btn btn-primary mt-3" role="button">Submit</a>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </div>
         </form>
     </div>
 
@@ -138,7 +167,11 @@
             var displayStatus = document.getElementById("coronaryDisease").value;
             document.getElementById("coronaryDiseaseType").style.display = (displayStatus === "yes") ? "block" : "none";
         }
-        </script>
-        
+    </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- KaTeX JS for Math Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
 </body>
 </html>

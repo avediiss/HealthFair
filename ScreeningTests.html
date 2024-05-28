@@ -8,33 +8,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    <style>
+        .form-label {
+            font-weight: bold;
+        }
+        .form-container {
+            padding: 30px;
+        }
+    </style>
 </head>
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Screening Tests</h1>
-        <form id="screeningTestsForm" class="card card-body bg-white">
+        <form id="screeningTestsForm" class="card card-body bg-white shadow-sm form-container">
             <!-- Sigmoidoscopy -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="sigmoidoscopy" class="form-label required">Sigmoidoscopy:</label>
-                    <select id="sigmoidoscopy" name="sigmoidoscopy" class="form-select" required>
+                    <select id="sigmoidoscopy" name="sigmoidoscopy" class="form-select" required onchange="toggleDate('sigmoidoscopy')">
                         <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-                <!-- Colonoscopy -->
+                <div class="col-md-6" id="sigmoidoscopyDate" style="display: none;">
+                    <label for="sigmoidoscopyWhen" class="form-label required">When?</label>
+                    <input type="date" id="sigmoidoscopyWhen" name="sigmoidoscopyWhen" class="form-control">
+                </div>
+            </div>
+            <!-- Colonoscopy -->
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="colonoscopy" class="form-label required">Colonoscopy:</label>
-                    <select id="colonoscopy" name="colonoscopy" class="form-select" required>
+                    <select id="colonoscopy" name="colonoscopy" class="form-select" required onchange="toggleDate('colonoscopy')">
                         <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
+                </div>
+                <div class="col-md-6" id="colonoscopyDate" style="display: none;">
+                    <label for="colonoscopyWhen" class="form-label required">When?</label>
+                    <input type="date" id="colonoscopyWhen" name="colonoscopyWhen" class="form-control">
                 </div>
             </div>
             <!-- Lung CT -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="lungCT" class="form-label required">Lung CT:</label>
                     <select id="lungCT" name="lungCT" class="form-select" required onchange="toggleDate('lungCT')">
@@ -49,7 +67,7 @@
                 </div>
             </div>
             <!-- Breast Mamography -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="breastMamography" class="form-label required">Breast Mamography:</label>
                     <select id="breastMamography" name="breastMamography" class="form-select" required onchange="toggleDate('breastMamography')">
@@ -63,8 +81,38 @@
                     <input type="date" id="breastMamographyWhen" name="breastMamographyWhen" class="form-control">
                 </div>
             </div>
+            <!-- Breast MRI -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="breastMri" class="form-label required">Breast MRI:</label>
+                    <select id="breastMri" name="breastMri" class="form-select" required onchange="toggleDate('breastMri')">
+                        <option value="select">Select...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="breastMriDate" style="display: none;">
+                    <label for="breastMriWhen" class="form-label required">When?</label>
+                    <input type="date" id="breastMriWhen" name="breastMriWhen" class="form-control">
+                </div>
+            </div>
+            <!-- Breast Ultra Sound -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="breastUltrasound" class="form-label required">Breast Ultra Sound:</label>
+                    <select id="breastUltrasound" name="breastUltrasound" class="form-select" required onchange="toggleDate('breastUltrasound')">
+                        <option value="select">Select...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="breastUltrasoundDate" style="display: none;">
+                    <label for="breastUltrasoundWhen" class="form-label required">When?</label>
+                    <input type="date" id="breastUltrasoundWhen" name="breastUltrasoundWhen" class="form-control">
+                </div>
+            </div>
             <!-- Breast Biopsy -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="breastBiopsy" class="form-label required">Breast Biopsy for Suspected Breast Cancer:</label>
                     <select id="breastBiopsy" name="breastBiopsy" class="form-select" required onchange="toggleDate('breastBiopsy')">
@@ -79,7 +127,7 @@
                 </div>
             </div>
             <!-- Pap Smear -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="papSmear" class="form-label required">PAP Smear:</label>
                     <select id="papSmear" name="papSmear" class="form-select" required onchange="toggleDate('papSmear')">
@@ -94,7 +142,7 @@
                 </div>
             </div>
             <!-- Ultrasound of Abdomen -->
-            <div class="row g-3">
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
                     <label for="ultrasoundAbdomen" class="form-label required">Ultrasound of Abdomen:</label>
                     <select id="ultrasoundAbdomen" name="ultrasoundAbdomen" class="form-select" required onchange="toggleDate('ultrasoundAbdomen')">
@@ -108,7 +156,9 @@
                     <input type="date" id="ultrasoundAbdomenWhen" name="ultrasoundAbdomenWhen" class="form-control">
                 </div>
             </div>
-            <a href="PhysicalHealths.html" class="btn btn-primary mt-3" role="button">Submit</a>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </div>
         </form>
     </div>
     <script>
@@ -118,5 +168,10 @@
             document.getElementById(testDateId).style.display = (testStatus === 'yes') ? 'block' : 'none';
         }
     </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- KaTeX JS for Math Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
 </body>
 </html>

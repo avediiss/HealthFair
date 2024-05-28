@@ -7,15 +7,23 @@
     <title>Medical History</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    <style>
+        .form-label {
+            font-weight: bold;
+        }
+        .form-container {
+            padding: 30px;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
     <div class="container py-5">
         <h1 class="mb-4 text-center">Medical History</h1>
-        <form id="ascvdForm" class="card card-body bg-white">
+        <form id="ascvdForm" class="card card-body bg-white shadow-sm form-container">
             <!-- Urinary -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="urinary" class="form-label required">Do you have a urinary tract problem?</label>
                     <select id="urinary" name="urinary" class="form-select" required onchange="toggleUrinaryTract()">
                         <option value="no">No</option>
@@ -34,8 +42,8 @@
             </div>
 
             <!-- Cancer -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="cancer" class="form-label required">Do you have cancer?</label>
                     <select id="cancer" name="cancer" class="form-select" required onchange="toggleCancerType()">
                         <option value="no">No</option>
@@ -57,8 +65,8 @@
             </div>
 
             <!-- Endocrine -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="endocrine" class="form-label required">Do you have endocrine problems?</label>
                     <select id="endocrine" name="endocrine" class="form-select" required onchange="toggleEndocrineType()">
                         <option value="no">No</option>
@@ -77,8 +85,8 @@
             </div>
 
             <!-- Psychological problems -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="psychological" class="form-label required">Do you have psychological problems?</label>
                     <select id="psychological" name="psychological" class="form-select" required onchange="togglePsychologicalType()">
                         <option value="no">No</option>
@@ -96,11 +104,11 @@
                     </select>
                 </div>
             </div>
-            <!-- neurologic -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <!-- Neurologic -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="neurologic" class="form-label required">Do you have any neurologic problems?</label>
-                    <select id="neurologic" name="neurologic" class="form-select" required onchange="neurologicType()">
+                    <select id="neurologic" name="neurologic" class="form-select" required onchange="toggleNeurologicType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -117,12 +125,11 @@
                     </select>
                 </div>
             </div>
-            <!-- cardiologic-->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <!-- Cardiologic -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="cardiologic" class="form-label required">Do you have any cardiologic problems?</label>
-                    <select id="cardiologic" name="cardiologic" class="form-select" required
-                        onchange="cardiologicType()">
+                    <select id="cardiologic" name="cardiologic" class="form-select" required onchange="toggleCardiologicType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -140,12 +147,11 @@
                     </select>
                 </div>
             </div>
-            <!--  gastroenterological -->
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label for="gastro" class="form-label required">Do you have any gastroenterological
-                        problems?</label>
-                    <select id="gastro" name="gastro" class="form-select" required onchange="gastroType()">
+            <!-- Gastroenterological -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
+                    <label for="gastro" class="form-label required">Do you have any gastroenterological problems?</label>
+                    <select id="gastro" name="gastro" class="form-select" required onchange="toggleGastroType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -166,10 +172,10 @@
                 </div>
             </div>
             <!-- Pulmonary -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="pulmonary" class="form-label required">Do you have any pulmonary problems?</label>
-                    <select id="pulmonary" name="pulmonary" class="form-select" required onchange="pulmonaryType()">
+                    <select id="pulmonary" name="pulmonary" class="form-select" required onchange="togglePulmonaryType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -185,13 +191,11 @@
                     </select>
                 </div>
             </div>
-            <!-- musculoskeletal or joint -->
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label for="musculoskeletal" class="form-label required">Do you have any musculoskeletal or joint
-                        problems?</label>
-                    <select id="musculoskeletal" name="musculoskeletal" class="form-select" required
-                        onchange="musculoskeletalType()">
+            <!-- Musculoskeletal or joint -->
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
+                    <label for="musculoskeletal" class="form-label required">Do you have any musculoskeletal or joint problems?</label>
+                    <select id="musculoskeletal" name="musculoskeletal" class="form-select" required onchange="toggleMusculoskeletalType()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -207,8 +211,8 @@
                 </div>
             </div>
             <!-- Anemia -->
-            <div class="row g-3">
-                <div class="col-md-6">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
                     <label for="anemia" class="form-label required">Do you have anemia?</label>
                     <select id="anemia" name="anemia" class="form-select" required>
                         <option value="no">No</option>
@@ -217,10 +221,9 @@
                 </div>
             </div>
             <!-- Women Health Mutation-->
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label for="mutation" class="form-label required">Women Health-Mutation in either the BRCA1 or
-                        BRCA2</label>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6 text-center">
+                    <label for="mutation" class="form-label required">Women Health-Mutation in either the BRCA1 or BRCA2</label>
                     <select id="mutation" name="mutation" class="form-select" required>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
@@ -228,66 +231,63 @@
                 </div>
             </div>
 
-                <a href="SurgicalHistory.html" class="btn btn-primary mt-3" role="button">Submit</a>
-
-    </div>
-    </form>
-
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </div>
+        </form>
     </div>
 
     <script>
-        function toggleQuitSmokingField() {
-            var smokerStatus = document.getElementById("smoker").value;
-            var quitSmokingGroup = document.getElementById("quitSmokingGroup");
-            quitSmokingGroup.style.display = (smokerStatus === "former") ? "block" : "none";
-        }
-    
         function toggleUrinaryTract() {
             var urinaryStatus = document.getElementById("urinary").value;
             document.getElementById("urinaryTractDetails").style.display = (urinaryStatus === "yes") ? "block" : "none";
         }
-    
+
         function toggleCancerType() {
             var cancerStatus = document.getElementById("cancer").value;
             document.getElementById("cancerType").style.display = (cancerStatus === "yes") ? "block" : "none";
         }
-    
+
         function toggleEndocrineType() {
             var endocrineStatus = document.getElementById("endocrine").value;
             document.getElementById("endocrineType").style.display = (endocrineStatus === "yes") ? "block" : "none";
         }
-    
+
         function togglePsychologicalType() {
             var psychologicalStatus = document.getElementById("psychological").value;
             document.getElementById("psychologicalType").style.display = (psychologicalStatus === "yes") ? "block" : "none";
         }
-    
+
         function toggleNeurologicType() {
             var neurologicStatus = document.getElementById("neurologic").value;
             document.getElementById("neurologicType").style.display = (neurologicStatus === "yes") ? "block" : "none";
         }
-    
+
         function toggleCardiologicType() {
             var cardiologicStatus = document.getElementById("cardiologic").value;
             document.getElementById("cardiologicType").style.display = (cardiologicStatus === "yes") ? "block" : "none";
         }
-    
+
         function toggleGastroType() {
             var gastroStatus = document.getElementById("gastro").value;
             document.getElementById("gastroType").style.display = (gastroStatus === "yes") ? "block" : "none";
         }
-    
+
         function togglePulmonaryType() {
             var pulmonaryStatus = document.getElementById("pulmonary").value;
             document.getElementById("pulmonaryType").style.display = (pulmonaryStatus === "yes") ? "block" : "none";
         }
-    
+
         function toggleMusculoskeletalType() {
             var musculoskeletalStatus = document.getElementById("musculoskeletal").value;
             document.getElementById("musculoskeletalType").style.display = (musculoskeletalStatus === "yes") ? "block" : "none";
         }
     </script>
-    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- KaTeX JS for Math Rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
 </body>
 
 </html>

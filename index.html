@@ -14,60 +14,65 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
     />
+    <style>
+      .form-label {
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body class="bg-light">
     <div class="container py-5">
-      <h1 class="mb-4 text-center">Demographics</h1>
-      <form id="ascvdForm" class="card card-body bg-white" action="submit_form.php" method="POST">
-        <div class="row g-3">
+      <h1 class="mb-3 text-center">Demographics</h1>
+      <form id="ascvdForm" class="card card-body bg-white shadow-sm" action="submit_form.php" method="POST">
+        <div class="row g-3 mb-3">
           <!-- UID and EID -->
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="uid" class="form-label">Unique Identifier:</label>
             <input type="number" name="uid" id="uid" class="form-control" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="eid" class="form-label">Employee ID:</label>
             <input type="number" name="eid" id="eid" class="form-control" />
           </div>
         </div>
-        <div class="row g-3">
+        <div class="row g-3 mb-3">
           <!-- Name Fields -->
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="fname" class="form-label">First Name:</label>
             <input type="text" name="fname" id="fname" class="form-control" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="faname" class="form-label">Father's Name:</label>
             <input type="text" name="faname" id="faname" class="form-control" />
           </div>
         </div>
-        <div class="row g-3">
-          <div class="col-md-6">
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 text-center">
             <label for="lname" class="form-label">Last Name:</label>
             <input type="text" name="lname" id="lname" class="form-control" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="moname" class="form-label">Mother's Name:</label>
             <input type="text" name="moname" id="moname" class="form-control" />
           </div>
         </div>
-        <div class="row g-3">
-          <div class="col-md-6">
+        <div class="row g-3 mb-3">
+          <div class="col-md-6 text-center">
             <label for="epemail" class="form-label">Employee Email:</label>
             <input type="email" name="epemail" id="epemail" class="form-control" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="pnum" class="form-label">Phone Number:</label>
             <input type="tel" name="pnum" id="pnum" class="form-control" />
           </div>
         </div>
-        <div class="row g-3">
+        <div class="row g-3 mb-3">
           <!-- Age and Sex -->
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="age" class="form-label">Age:</label>
-            <input type="dob" name="age" id="age" class="form-control" />
+            <input type="date" name="age" id="age" class="form-control" />
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="gender" class="form-label">Gender:</label>
             <select id="gender" name="gender" class="form-select">
               <option value="select">Select...</option>
@@ -76,29 +81,32 @@
             </select>
           </div>
         </div>
-        <div class="row g-3">
+        <div class="row g-3 mb-3">
           <!-- Race and Education -->
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="race" class="form-label">Race:</label>
             <select id="race" name="race" class="form-select">
               <option value="select">Select...</option>
               <option value="white">White</option>
-              <option value="africanAmerican">African American</option>
-              <option value="other">Other</option>
+              <option value="african">African</option>
+              <option value="asian">Asian</option>
+              <option value="hispanic">Hispanic</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 text-center">
             <label for="education" class="form-label">Education:</label>
             <select id="education" name="education" class="form-select">
               <option value="select">Select...</option>
               <option value="lessThanHighSchool">Less than high school</option>
               <option value="highSchoolGraduate">High school graduate</option>
               <option value="collegeGraduate">College graduate</option>
-              <option value="postgraduateOrProfessionalDegree">Postgraduate </option>
+              <option value="postgraduateOrProfessionalDegree">Postgraduate</option>
             </select>
           </div>
         </div>
-        <a href="LifestyleBehavior.html" class="btn btn-primary mt-3" role="button">Submit</a>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </div>
       </form>
     </div>
     <!-- Bootstrap 5 JS Bundle -->
