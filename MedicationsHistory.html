@@ -26,6 +26,7 @@
                 <div class="col-md-6">
                     <label for="medication" class="form-label required">Do you take any medications?</label>
                     <select id="medication" name="medication" class="form-select" required onchange="toggleMedicationDetails()">
+                        <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -41,6 +42,7 @@
                 <div class="col-md-6">
                     <label for="antihypertensives" class="form-label required">Antihypertensives</label>
                     <select id="antihypertensives" name="antihypertensives" class="form-select" required>
+                        <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -51,6 +53,7 @@
                 <div class="col-md-6">
                     <label for="antilipidemic" class="form-label required">Antilipidemic</label>
                     <select id="antilipidemic" name="antilipidemic" class="form-select" required>
+                        <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -61,6 +64,7 @@
                 <div class="col-md-6">
                     <label for="aspirin" class="form-label required">Aspirin</label>
                     <select id="aspirin" name="aspirin" class="form-select" required onchange="toggleAspirinType()">
+                        <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -68,6 +72,7 @@
                 <div class="col-md-6" id="aspirinDetails" style="display: none;">
                     <label for="takenAspirin" class="form-label required">Taken over the past 30 days?</label>
                     <select id="takenAspirin" name="takenAspirin" class="form-select">
+                        <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -78,6 +83,7 @@
                 <div class="col-md-6">
                     <label for="otherMeds" class="form-label required">Other Medications</label>
                     <select id="otherMeds" name="otherMeds" class="form-select" required onchange="toggleOtherMedsDetails()">
+                        <option value="select">Select...</option>
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -89,7 +95,7 @@
             </div>
 
             <div class="text-center">
-                <a href="ScreeningTests.html" class="btn btn-primary mt-3" role="button">Submit</a>
+                <a href="ScreeningTests.html" class="btn btn-primary mt-3" role="button">Next</a>
             </div>
         </form>
     </div>
