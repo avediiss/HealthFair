@@ -18,10 +18,12 @@
                 <div class="col-md-6">
                     <label for="exercise" class="form-label required">Exercise</label>
                     <select id="exercise" name="exercise" class="form-select" required onchange="toggleExerciseDetails()">
+                        <option value="select">Select...</option>
+
                         <option value="noactivity">No Activity</option>
-                        <option value="lightactivity">Light Activity</option>
-                        <option value="modestactivity">Modest Activity</option>
-                        <option value="highintensity">High Intensity</option>
+                        <option value="lightactivity">Light Activity (<30 minutes a day 5 days a week)</option>
+                        <option value="modestactivity">Modest Activity (30 minutes a day 5 days a week)</option>
+                        <option value="highintensity">High Intensity (>30 minutes a day 5 days a week)</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="exerciseDetails" style="display: none;">
@@ -47,6 +49,8 @@
                 <div class="col-md-6">
                     <label for="alcohol" class="form-label required">Drinks alcohol</label>
                     <select id="alcohol" name="alcohol" class="form-select" required onchange="toggleAlcoholDetails()">
+                        <option value="select">Select...</option>
+
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
@@ -62,6 +66,8 @@
                 <div class="col-md-6">
                     <label for="smoker" class="form-label required">Smoker?</label>
                     <select id="smoker" name="smoke" class="form-select" required onchange="toggleSmokingDetails()">
+                        <option value="select">Select...</option>
+
                         <option value="never">Never</option>
                         <option value="current">Current</option>
                         <option value="former">Former</option>
@@ -71,16 +77,16 @@
 
             <!-- Details for Current and Former Smokers -->
             <div id="currentSmokerDetails" style="display: none;" class="col-md-6">
-                <label for="startSmoking" class="form-label required">When did you start smoking?</label>
-                <input type="text" id="startSmoking" name="startSmoking" class="form-control" placeholder="Year or age">
+                <label for="startSmoking" class="form-label required">At what age you started smoking?</label>
+                <input type="text" id="startSmoking" name="startSmoking" class="form-control" placeholder="Age">
                 <label for="cigarettesPerDay" class="form-label required">How many cigarettes per day do you smoke?</label>
                 <input type="number" id="cigarettesPerDay" name="cigarettesPerDay" class="form-control">
             </div>
             <div id="formerSmokerDetails" style="display: none;" class="col-md-6">
-                <label for="startSmokingFormer" class="form-label required">When did you start smoking?</label>
-                <input type="text" id="startSmokingFormer" name="startSmokingFormer" class="form-control" placeholder="Year or age">
-                <label for="quitSmoking" class="form-label required">When did you quit smoking?</label>
-                <input type="text" id="quitSmoking" name="quitSmoking" class="form-control" placeholder="Year or age">
+                <label for="startSmokingFormer" class="form-label required">At what age you started smoking?</label>
+                <input type="text" id="startSmokingFormer" name="startSmokingFormer" class="form-control" placeholder=" age">
+                <label for="quitSmoking" class="form-label required">At what age you quit smoking?</label>
+                <input type="text" id="quitSmoking" name="quitSmoking" class="form-control" placeholder=" age">
                 <label for="cigarettesPerDayFormer" class="form-label required">How many cigarettes per day did you smoke?</label>
                 <input type="number" id="cigarettesPerDayFormer" name="cigarettesPerDayFormer" class="form-control">
             </div>
