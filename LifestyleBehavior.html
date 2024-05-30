@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Style Behavior</title>
+    <title>Lifestyle Behavior</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- KaTeX CSS for Math Rendering -->
@@ -27,111 +27,122 @@
             width: 100%;
             max-width: 600px;
         }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #007bff;
+        }
     </style>
 </head>
 <body class="bg-light">
-    <div class="container py-5 form-container">
-        <div class="form-box card card-body bg-white shadow-sm">
-            <h1 class="mb-4 text-center">Lifestyle Behavior</h1>
-            <form id="lifestyleForm">
-                <!-- Exercise Section -->
-                <div class="row mb-3">
-                    <div class="col-md-12 center-content">
-                        <label for="exercise" class="form-label required">Exercise</label>
-                        <select id="exercise" name="exercise" class="form-select" required onchange="toggleExerciseDetails()">
-                            <option value="select">Select...</option>
-                            <option value="noactivity">No Activity</option>
-                            <option value="lightactivity">Light Activity (&lt;30 minutes a day 5 days a week)</option>
-                            <option value="modestactivity">Modest Activity (30 minutes a day 5 days a week)</option>
-                            <option value="highintensity">High Intensity (&gt;30 minutes a day 5 days a week)</option>
-                        </select>
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <h1>Company Name</h1>
+            <p id="currentDate"></p>
+        </div>
+        <div class="form-container">
+            <div class="form-box card card-body bg-white shadow-sm">
+                <form id="lifestyleForm">
+                    <!-- Exercise Section -->
+                    <div class="section-title">Exercise</div>
+                    <div class="row mb-3">
+                        <div class="col-md-12 center-content">
+                            <label for="exercise" class="form-label required">Exercise</label>
+                            <select id="exercise" name="exercise" class="form-select" required onchange="toggleExerciseDetails()">
+                                <option value="select">Select...</option>
+                                <option value="noactivity">No Activity</option>
+                                <option value="lightactivity">Light Activity (&lt;30 minutes a day 5 days a week)</option>
+                                <option value="modestactivity">Modest Activity (30 minutes a day 5 days a week)</option>
+                                <option value="highintensity">High Intensity (&gt;30 minutes a day 5 days a week)</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="row mb-3" id="exerciseDetails" style="display: none;">
-                    <div class="col-md-12 center-content">
-                        <label for="hoursPerWeek" class="form-label required">Hours per Week:</label>
-                        <input type="number" id="hoursPerWeek" name="hoursPerWeek" class="form-control" placeholder="Enter hours per week">
+                    <div class="row mb-3" id="exerciseDetails" style="display: none;">
+                        <div class="col-md-12 center-content">
+                            <label for="hoursPerWeek" class="form-label required">Hours per Week:</label>
+                            <input type="number" id="hoursPerWeek" name="hoursPerWeek" class="form-control" placeholder="Enter hours per week">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Diet Information Section -->
-                <div class="row mb-3">
-                    <div class="col-md-12 center-content">
-                        <label for="vegetables" class="form-label required">Vegetables Servings per Week</label>
-                        <input type="number" id="vegetables" name="vegetables" class="form-control" required min="0" max="21">
+                    <!-- Diet Section -->
+                    <div class="section-title">Diet</div>
+                    <div class="row mb-3">
+                        <div class="col-md-12 center-content">
+                            <label for="vegetables" class="form-label required">Vegetables Servings per Week</label>
+                            <input type="number" id="vegetables" name="vegetables" class="form-control" required min="0" max="21">
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-12 center-content">
-                        <label for="meat" class="form-label required">Real Meat Servings per Week</label>
-                        <input type="number" id="meat" name="meat" class="form-control" required min="0" max="21">
+                    <div class="row mb-3">
+                        <div class="col-md-12 center-content">
+                            <label for="meat" class="form-label required">Real Meat Servings per Week</label>
+                            <input type="number" id="meat" name="meat" class="form-control" required min="0" max="21">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Alcohol Consumption Section -->
-                <div class="row mb-3">
-                    <div class="col-md-12 center-content">
-                        <label for="alcohol" class="form-label required">Drinks alcohol</label>
-                        <select id="alcohol" name="alcohol" class="form-select" required onchange="toggleAlcoholDetails()">
-                            <option value="select">Select...</option>
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
+                    <!-- Drinks Alcohol Section -->
+                    <div class="section-title">Drinks Alcohol</div>
+                    <div class="row mb-3">
+                        <div class="col-md-12 center-content">
+                            <label for="alcohol" class="form-label required">Drinks alcohol</label>
+                            <select id="alcohol" name="alcohol" class="form-select" required onchange="toggleAlcoholDetails()">
+                                <option value="select">Select...</option>
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="row mb-3" id="alcoholDetails" style="display: none;">
-                    <div class="col-md-12 center-content">
-                        <label for="drinksPerWeek" class="form-label required">How many drinks per week?</label>
-                        <input type="number" id="drinksPerWeek" name="drinksPerWeek" class="form-control">
+                    <div class="row mb-3" id="alcoholDetails" style="display: none;">
+                        <div class="col-md-12 center-content">
+                            <label for="drinksPerWeek" class="form-label required">How many drinks per week?</label>
+                            <input type="number" id="drinksPerWeek" name="drinksPerWeek" class="form-control">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Smoker Section -->
-                <div class="row mb-3">
-                    <div class="col-md-12 center-content">
-                        <label for="smoker" class="form-label required">Smoker?</label>
-                        <select id="smoker" name="smoke" class="form-select" required onchange="toggleSmokingDetails()">
-                            <option value="select">Select...</option>
-                            <option value="never">Never</option>
-                            <option value="current">Current</option>
-                            <option value="former">Former</option>
-                        </select>
+                    <!-- Smoking Section -->
+                    <div class="section-title">Smoking</div>
+                    <div class="row mb-3">
+                        <div class="col-md-12 center-content">
+                            <label for="smoker" class="form-label required">Smoker?</label>
+                            <select id="smoker" name="smoke" class="form-select" required onchange="toggleSmokingDetails()">
+                                <option value="select">Select...</option>
+                                <option value="never">Never</option>
+                                <option value="current">Current</option>
+                                <option value="former">Former</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                    <div class="row mb-3" id="currentSmokerDetails" style="display: none;">
+                        <div class="col-md-12 center-content">
+                            <label for="startSmoking" class="form-label required">At what age you started smoking?</label>
+                            <input type="text" id="startSmoking" name="startSmoking" class="form-control" placeholder="Age">
+                        </div>
+                        <div class="col-md-12 center-content">
+                            <label for="cigarettesPerDay" class="form-label required">How many cigarettes per day do you smoke?</label>
+                            <input type="number" id="cigarettesPerDay" name="cigarettesPerDay" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3" id="formerSmokerDetails" style="display: none;">
+                        <div class="col-md-12 center-content">
+                            <label for="startSmokingFormer" class="form-label required">At what age you started smoking?</label>
+                            <input type="text" id="startSmokingFormer" name="startSmokingFormer" class="form-control" placeholder="Age">
+                        </div>
+                        <div class="col-md-12 center-content">
+                            <label for="quitSmoking" class="form-label required">At what age you quit smoking?</label>
+                            <input type="text" id="quitSmoking" name="quitSmoking" class="form-control" placeholder="Age">
+                        </div>
+                        <div class="col-md-12 center-content">
+                            <label for="cigarettesPerDayFormer" class="form-label required">How many cigarettes per day did you smoke?</label>
+                            <input type="number" id="cigarettesPerDayFormer" name="cigarettesPerDayFormer" class="form-control">
+                        </div>
+                    </div>
 
-                <!-- Details for Current Smokers -->
-                <div class="row mb-3" id="currentSmokerDetails" style="display: none;">
-                    <div class="col-md-12 center-content">
-                        <label for="startSmoking" class="form-label required">At what age you started smoking?</label>
-                        <input type="text" id="startSmoking" name="startSmoking" class="form-control" placeholder="Age">
+                    <div class="text-center">
+                        <a href="FamilyHistory.html" class="btn btn-primary mt-3" role="button">Next</a>
                     </div>
-                    <div class="col-md-12 center-content">
-                        <label for="cigarettesPerDay" class="form-label required">How many cigarettes per day do you smoke?</label>
-                        <input type="number" id="cigarettesPerDay" name="cigarettesPerDay" class="form-control">
-                    </div>
-                </div>
-
-                <!-- Details for Former Smokers -->
-                <div class="row mb-3" id="formerSmokerDetails" style="display: none;">
-                    <div class="col-md-12 center-content">
-                        <label for="startSmokingFormer" class="form-label required">At what age you started smoking?</label>
-                        <input type="text" id="startSmokingFormer" name="startSmokingFormer" class="form-control" placeholder="Age">
-                    </div>
-                    <div class="col-md-12 center-content">
-                        <label for="quitSmoking" class="form-label required">At what age you quit smoking?</label>
-                        <input type="text" id="quitSmoking" name="quitSmoking" class="form-control" placeholder="Age">
-                    </div>
-                    <div class="col-md-12 center-content">
-                        <label for="cigarettesPerDayFormer" class="form-label required">How many cigarettes per day did you smoke?</label>
-                        <input type="number" id="cigarettesPerDayFormer" name="cigarettesPerDayFormer" class="form-control">
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <a href="FamilyHistory.html" class="btn btn-primary mt-3" role="button">Next</a>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -152,6 +163,13 @@
             document.getElementById("currentSmokerDetails").style.display = (smokerStatus === 'current') ? "block" : "none";
             document.getElementById("formerSmokerDetails").style.display = (smokerStatus === 'former') ? "block" : "none";
         }
+
+        // Function to set current date
+        window.onload = function() {
+            var date = new Date();
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = date.toLocaleDateString('en-US', options);
+        };
     </script>
 
     <!-- Bootstrap JS Bundle -->
@@ -160,6 +178,3 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
 </body>
 </html>
-
-
- 
