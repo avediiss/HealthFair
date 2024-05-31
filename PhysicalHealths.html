@@ -23,31 +23,36 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h1 class="mb-4 text-center">Physical Health Assessments</h1>
+        <div class="text-center mb-4">
+            <h1>Medicals at the Center</h1>
+            <p id="current-date"></p>
+        </div>
         <form id="physicalHealthForm" class="card card-body bg-white shadow-sm">
+            <h1 class="mb-4 text-center">Physical Health Assessments</h1>
+
             <!-- Physical Section -->
             <div class="section-title">Physical</div>
             <div class="row g-3 mb-3">
                 <!-- Weight -->
                 <div class="col-md-4">
-                    <label for="weight" class="form-label">Weight (kg)</label>
+                    <label for="weight" class="form-label">Weight (kg) <span class="text-danger">*</span></label>
                     <input type="number" name="weight" id="weight" class="form-control" required>
                 </div>
                 <!-- Height -->
                 <div class="col-md-4">
-                    <label for="height" class="form-label">Height (cm)</label>
+                    <label for="height" class="form-label">Height (cm) <span class="text-danger">*</span></label>
                     <input type="number" name="height" id="height" class="form-control" required>
                 </div>
                 <!-- BMI -->
                 <div class="col-md-4">
-                    <label for="bmi" class="form-label">BMI (kg/m²)</label>
+                    <label for="bmi" class="form-label">BMI (kg/m²) <span class="text-danger">*</span></label>
                     <input type="number" name="bmi" id="bmi" class="form-control" required>
                 </div>
             </div>
             <div class="row g-3 mb-3">
                 <!-- Systolic BP -->
                 <div class="col-md-4">
-                    <label for="systolicBP" class="form-label">Systolic Blood Pressure (mm Hg)</label>
+                    <label for="systolicBP" class="form-label">Systolic Blood Pressure (mm Hg) <span class="text-danger">*</span></label>
                     <select name="systolicBP" id="systolicBP" class="form-select" required>
                         <option value="">Select...</option>
                         <option value="70">70</option>
@@ -84,36 +89,41 @@
                         <option value="225">225</option>
                     </select>
                 </div>
-                <!-- Diastolic BP -->
-                <div class="col-md-4">
-                    <label for="diastolicBP" class="form-label">Diastolic Blood Pressure (mm Hg)</label>
-                    <select name="diastolicBP" id="diastolicBP" class="form-select" required>
-                        <option value="">Select...</option>
-                        <option value="40">40</option>
-                        <option value="45">45</option>
-                        <option value="50">50</option>
-                        <option value="55">55</option>
-                        <option value="60">60</option>
-                        <option value="65">65</option>
-                        <option value="70">70</option>
-                        <option value="75">75</option>
-                        <option value="80">80</option>
-                        <option value="85">85</option>
-                        <option value="90">90</option>
-                        <option value="95">95</option>
-                        <option value="100">100</option>
-                        <option value="105">105</option>
-                        <option value="110">110</option>
-                        <option value="115">115</option>
-                        <option value="120">120</option>
-                        <option value="125">125</option>
-                    </select>
-                </div>
                 <!-- Heart Rate -->
                 <div class="col-md-4">
-                    <label for="heartRate" class="form-label">Heart Rate (BPM)</label>
-                    <input type="number" name="heartRate" id="heartRate" class="form-control" required min="20" max="200">
+                    <label for="heartRate" class="form-label">Heart Rate (BPM) <span class="text-danger">*</span></label>
+                    <input type="number" name="heartRate" id="heartRate" class="form-control" required min="20" max="200" required>
                 </div>
+                    <!-- Waist Circumference -->
+                      <div class="col-md-4">
+                        <label for="waistCircumference" class="form-label">Waist Circumference <span class="text-danger">*</span></label>
+                        <input type="number" id="waistCircumference" name="waistCircumference" class="form-control" min="30" max="300" required>
+                    </div>
+             <!-- Diastolic BP -->
+             <div class="col-md-4">
+                <label for="diastolicBP" class="form-label">Diastolic Blood Pressure (mm Hg) <span class="text-danger">*</span></label>
+                <select name="diastolicBP" id="diastolicBP" class="form-select" required>
+                    <option value="">Select...</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                    <option value="60">60</option>
+                    <option value="65">65</option>
+                    <option value="70">70</option>
+                    <option value="75">75</option>
+                    <option value="80">80</option>
+                    <option value="85">85</option>
+                    <option value="90">90</option>
+                    <option value="95">95</option>
+                    <option value="100">100</option>
+                    <option value="105">105</option>
+                    <option value="110">110</option>
+                    <option value="115">115</option>
+                    <option value="120">120</option>
+                    <option value="125">125</option>
+                </select>
+            </div>
             </div>
 
             <!-- Labs Section -->
@@ -122,12 +132,12 @@
                 <!-- Total Cholesterol -->
                 <div class="col-md-4">
                     <label for="totalCholesterol" class="form-label">Total Cholesterol (mg/dL)</label>
-                    <input type="number" id="totalCholesterol" name="totalCholesterol" class="form-control" required min="100" max="400">
+                    <input type="number" id="totalCholesterol" name="totalCholesterol" class="form-control"  min="100" max="400">
                 </div>
                 <!-- HDL Cholesterol -->
                 <div class="col-md-4">
                     <label for="hdlCholesterol" class="form-label">HDL Cholesterol (mg/dL)</label>
-                    <input type="number" id="hdlCholesterol" name="hdlCholesterol" class="form-control" required min="20" max="120">
+                    <input type="number" id="hdlCholesterol" name="hdlCholesterol" class="form-control"  min="20" max="120">
                 </div>
                 <!-- LDL Cholesterol -->
                 <div class="col-md-4">
@@ -157,6 +167,12 @@
             </div>
         </form>
     </div>
+    <script>
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const today  = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+
+    </script>
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- KaTeX JS for Math Rendering -->

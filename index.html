@@ -6,8 +6,8 @@
     <title>Demographics</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Add KaTeX CSS for Math Rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    <!-- Add intl-tel-input CSS for phone number input with flags -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
     <style>
         .form-label {
             font-weight: bold;
@@ -19,87 +19,88 @@
             background-color: #ffffff; /* White background for form container */
             padding: 30px;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .form-control, .form-select {
             background-color: #fff; /* White background for input boxes */
         }
         .phone-input-group {
             display: flex;
-        }
-        .phone-input-group select {
-            flex: 0 0 20%; /* 20% width */
-            margin-right: 5px;
+            justify-content: center;
         }
         .phone-input-group input {
-            flex: 1; /* 80% width */
+            width: 100%; /* Full width for phone input */
+            max-width: 400px; /* Adjust the max-width as needed */
+        }
+        .phone-input-group .iti {
+            width: 100%; /* Full width for intl-tel-input */
+            max-width: 400px; /* Adjust the max-width as needed */
+        }
+        .phone-input-group .iti__selected-dial-code {
+            display: inline-block; /* Ensure the dial code is displayed inline */
         }
     </style>
 </head>
 <body>
     <div class="container py-5">
+        <div class="text-center mb-4">
+            <h1>Medicals at the Center</h1>
+            <p id="current-date"></p>
+        </div>
         <div class="bg-container">
             <h1 class="mb-3 text-center">Demographics</h1>
             <form id="ascvdForm" class="card card-body shadow-sm" action="submit_form.php" method="POST">
                 <div class="row g-3 mb-3">
                     <!-- UID, EID, and Employee Email -->
-                    <div class="col-md-4 text-center">
-                        <label for="uid" class="form-label">EMR:</label>
+                    <div class="col-md-4">
+                        <label for="uid" class="form-label">EMR</label>
                         <input type="number" name="uid" id="uid" class="form-control">
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="eid" class="form-label">Employee ID:</label>
+                    <div class="col-md-4">
+                        <label for="eid" class="form-label">Employee ID</label>
                         <input type="number" name="eid" id="eid" class="form-control">
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="epemail" class="form-label">Employee Email:</label>
+                    <div class="col-md-4">
+                        <label for="epemail" class="form-label">Employee Email  <span class="text-danger">*</span></label>
                         <input type="email" name="epemail" id="epemail" class="form-control">
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <!-- First Name, Last Name, and Father's Name -->
-                    <div class="col-md-4 text-center">
-                        <label for="fname" class="form-label">First Name:</label>
+                    <div class="col-md-4">
+                        <label for="fname" class="form-label">First Name  <span class="text-danger">*</span></label>
                         <input type="text" name="fname" id="fname" class="form-control">
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="faname" class="form-label">Father's Name:</label>
+                    <div class="col-md-4">
+                        <label for="faname" class="form-label">Father's Name <span class="text-danger">*</span></label>
                         <input type="text" name="faname" id="faname" class="form-control">
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="lname" class="form-label">Last Name:</label>
+                    <div class="col-md-4">
+                        <label for="lname" class="form-label">Last Name  <span class="text-danger">*</span></label>
                         <input type="text" name="lname" id="lname" class="form-control">
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <!-- Mother's Name, Phone Number, and Age -->
-                    <div class="col-md-4 text-center">
-                        <label for="moname" class="form-label">Mother's Name:</label>
+                    <div class="col-md-4">
+                        <label for="moname" class="form-label">Mother's Name <span class="text-danger">*</span></label>
                         <input type="text" name="moname" id="moname" class="form-control">
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="pnum" class="form-label">Phone Number:</label>
+                    <div class="col-md-4">
+                        <label for="pnum" class="form-label">Mobile Number <span class="text-danger">*</span></label>
                         <div class="phone-input-group">
-                            <select name="pnum_prefix" id="pnum_prefix" class="form-select">
-                                <option value="03">03</option>
-                                <option value="71">71</option>
-                                <option value="76">76</option>
-                                <option value="78">78</option>
-                                <option value="79">79</option>
-                                <option value="81">81</option>
-                                <option value="86">86</option>
-                            </select>
-                            <input type="tel" name="pnum_suffix" id="pnum_suffix" class="form-control" pattern="\d{6}" maxlength="6" placeholder="XXXXXX" required>
+                            <input type="tel" name="pnum" id="pnum" class="form-control" required>
                         </div>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="age" class="form-label">Date of Birth:</label>
+                    <div class="col-md-4">
+                        <label for="age" class="form-label">Date of Birth <span class="text-danger">*</span></label>
                         <input type="date" name="age" id="age" class="form-control">
                     </div>
                 </div>
                 <div class="row g-3 mb-3">
                     <!-- Gender, Race, and Education -->
-                    <div class="col-md-4 text-center">
-                        <label for="gender" class="form-label">Gender:</label>
+                    <div class="col-md-4">
+                        <label for="gender" class="form-label">Gender  <span class="text-danger">*</span></label>
                         <select id="gender" name="gender" class="form-select">
                             <option value="select">Select...</option>
                             <option value="male">Male</option>
@@ -107,8 +108,8 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="race" class="form-label">Race:</label>
+                    <div class="col-md-4">
+                        <label for="race" class="form-label">Race <span class="text-danger">*</span></label>
                         <select id="race" name="race" class="form-select">
                             <option value="select">Select...</option>
                             <option value="white">White</option>
@@ -117,8 +118,8 @@
                             <option value="african">African</option>
                         </select>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label for="education" class="form-label">Education:</label>
+                    <div class="col-md-4">
+                        <label for="education" class="form-label">Education <span class="text-danger">*</span></label>
                         <select id="education" name="education" class="form-select">
                             <option value="select">Select...</option>
                             <option value="lessThanHighSchool">Less than high school</option>
@@ -129,12 +130,28 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                  <a href="LifestyleBehavior.html" class="btn btn-primary mt-3" role="button">Next</a>
                 </div>
             </form>
         </div>
     </div>
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- intl-tel-input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const today  = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+
+        // Initialize intl-tel-input
+        const input = document.querySelector("#pnum");
+        window.intlTelInput(input, {
+            initialCountry: "lb", // Set Lebanon as the default country
+            preferredCountries: ["lb"],
+            separateDialCode: true, // Show the dial code next to the flag
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+    </script>
 </body>
 </html>

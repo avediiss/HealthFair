@@ -19,21 +19,25 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h1 class="mb-4 text-center">Family History</h1>
+        <div class="text-center mb-4">
+            <h1>Medicals at the Center</h1>
+            <p id="current-date"></p>
+        </div>
         <form id="ascvdForm" class="card card-body bg-white shadow-sm form-container">
+            <h1 class="mb-4 text-center">Family History</h1>
+
             <!-- Colorectal Cancer -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="colorectalCancer" class="form-label required">Colorectal Cancer:</label>
-                    <select id="colorectalCancer" name="colorectalCancer" class="form-select" required onchange="colorectalCancerType()">
+                    <label for="colorectalCancer" class="form-label required">Colorectal Cancer <span class="text-danger">*</span></label>
+                    <select id="colorectalCancer" name="colorectalCancer" class="form-select" required data-toggle-target="colorectalCancerType">
                         <option value="select">Select...</option>
-
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="colorectalCancerType" style="display: none;">
-                    <label for="colorectalAge" class="form-label required">At what age:</label>
+                    <label for="colorectalAge" class="form-label required">At what age</label>
                     <input type="number" id="colorectalAge" name="colorectalAge" class="form-control">
                 </div>
             </div>
@@ -41,18 +45,17 @@
             <!-- Breast Cancer -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="breastCancer" class="form-label required">Breast Cancer:</label>
-                    <select id="breastCancer" name="breastCancer" class="form-select" required onchange="breastCancerType()">
+                    <label for="breastCancer" class="form-label required">Breast Cancer <span class="text-danger">*</span></label>
+                    <select id="breastCancer" name="breastCancer" class="form-select" required data-toggle-target="breastCancerType">
                         <option value="select">Select...</option>
-
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="breastCancerType" style="display: none;">
-                    <label for="breastSiblings" class="form-label required">How many siblings:</label>
+                    <label for="breastSiblings" class="form-label required">How many siblings</label>
                     <input type="number" id="breastSiblings" name="breastSiblings" class="form-control">
-                    <label for="youngestSiblingAge" class="form-label required">Age of youngest sibling:</label>
+                    <label for="youngestSiblingAge" class="form-label required">Age of youngest sibling</label>
                     <input type="number" id="youngestSiblingAge" name="youngestSiblingAge" class="form-control">
                 </div>
             </div>
@@ -60,16 +63,15 @@
             <!-- Lung Cancer -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="lungCancer" class="form-label required">Lung Cancer:</label>
-                    <select id="lungCancer" name="lungCancer" class="form-select" required onchange="lungCancerType()">
+                    <label for="lungCancer" class="form-label required">Lung Cancer <span class="text-danger">*</span></label>
+                    <select id="lungCancer" name="lungCancer" class="form-select" required data-toggle-target="lungCancerType">
                         <option value="select">Select...</option>
-
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="lungCancerType" style="display: none;">
-                    <label for="lungCancerAge" class="form-label required">At what age:</label>
+                    <label for="lungCancerAge" class="form-label required">At what age</label>
                     <input type="number" id="lungCancerAge" name="lungCancerAge" class="form-control">
                 </div>
             </div>
@@ -77,35 +79,33 @@
             <!-- Prostate Cancer -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="prostateCancer" class="form-label required">Prostate Cancer:</label>
-                    <select id="prostateCancer" name="prostateCancer" class="form-select" required onchange="prostateCancerType()">
+                    <label for="prostateCancer" class="form-label required">Prostate Cancer <span class="text-danger">*</span></label>
+                    <select id="prostateCancer" name="prostateCancer" class="form-select" required data-toggle-target="prostateCancerType">
                         <option value="select">Select...</option>
-
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="prostateCancerType" style="display: none;">
-                    <label for="prostateSiblings" class="form-label required">How many relatives: (Father and/or Brother)</label>
+                    <label for="prostateSiblings" class="form-label required">How many relatives (Father and/or Brother)</label>
                     <input type="number" id="prostateSiblings" name="prostateSiblings" class="form-control">
-                    <label for="youngestSiblingAge" class="form-label required">Age of youngest relatives:</label>
-                    <input type="number" id="youngestSiblingAge" name="youngestSiblingAge" class="form-control">
+                    <label for="youngestRelativeAge" class="form-label required">Age of youngest relatives</label>
+                    <input type="number" id="youngestRelativeAge" name="youngestRelativeAge" class="form-control">
                 </div>
             </div>
 
             <!-- Abdominal Aortic Aneurysm -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="abdominalAneurysm" class="form-label required">Abdominal Aortic Aneurysm:</label>
-                    <select id="abdominalAneurysm" name="abdominalAneurysm" class="form-select" required onchange="abdominalAneurysmType()">
+                    <label for="abdominalAneurysm" class="form-label required">Abdominal Aortic Aneurysm <span class="text-danger">*</span></label>
+                    <select id="abdominalAneurysm" name="abdominalAneurysm" class="form-select" required data-toggle-target="abdominalAneurysmType">
                         <option value="select">Select...</option>
-
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="abdominalAneurysmType" style="display: none;">
-                    <label for="aneurysmAge" class="form-label required">At what age:</label>
+                    <label for="aneurysmAge" class="form-label required">At what age</label>
                     <input type="number" id="aneurysmAge" name="aneurysmAge" class="form-control">
                 </div>
             </div>
@@ -113,28 +113,27 @@
             <!-- Coronary Artery Disease -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="coronaryDisease" class="form-label required">Coronary Artery Disease:</label>
-                    <select id="coronaryDisease" name="coronaryDisease" class="form-select" required onchange="coronaryDiseaseType()">
+                    <label for="coronaryDisease" class="form-label required">Coronary Artery Disease <span class="text-danger">*</span></label>
+                    <select id="coronaryDisease" name="coronaryDisease" class="form-select" required data-toggle-target="coronaryDiseaseType">
                         <option value="select">Select...</option>
-
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div class="col-md-6" id="coronaryDiseaseType" style="display: none;">
-                    <label for="coronaryDiseaseAge" class="form-label required"> Select Which Relative:</label>
+                    <label for="coronaryDiseaseAge" class="form-label required">Select Which Relative</label>
                     <select id="coronaryDiseaseAge" name="coronaryDiseaseAge" class="form-select">
                         <option value="select">Select...</option>
-
-                        <option value="men">Men<55</option>
-                        <option value="women">Women<65</option>
+                        <option value="men">Men < 55</option>
+                        <option value="women">Women < 65</option>
                     </select>
                 </div>
             </div>
-              <!-- DM Type II -->
-              <div class="row g-3 mb-3">
+
+            <!-- DM Type II -->
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="dm" class="form-label required">DM Type II</label>
+                    <label for="dm" class="form-label required">DM Type II <span class="text-danger">*</span></label>
                     <select id="dm" name="dm" class="form-select" required>
                         <option value="select">Select...</option>
                         <option value="no">No</option>
@@ -142,10 +141,11 @@
                     </select>
                 </div>
             </div>
-              <!-- Hypertension -->
-              <div class="row g-3 mb-3">
+
+            <!-- Hypertension -->
+            <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="hypertension" class="form-label required">Hypertension</label>
+                    <label for="hypertension" class="form-label required">Hypertension <span class="text-danger">*</span></label>
                     <select id="hypertension" name="hypertension" class="form-select" required>
                         <option value="select">Select...</option>
                         <option value="no">No</option>
@@ -153,14 +153,20 @@
                     </select>
                 </div>
             </div>
-              <!-- Others -->
-              <div class="row g-3 mb-3">
+
+            <!-- Others -->
+            <div id="otherFieldsContainer" class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="other" class="form-label required">Other</label>
-                    <input type="text" id="other" name="other" class="form-select" required>
-                     
+                    <label for="other0" class="form-label required">Other <span class="text-danger">*</span></label>
+                    <input type="text" id="other0" name="other[]" class="form-control" required>
                 </div>
             </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-secondary" onclick="addOtherField()">Add Another</button>
+                </div>
+            </div>
+            
             <div class="text-center">
                 <a href="MedicalHistory.html" class="btn btn-primary mt-3" role="button">Next</a>
             </div>
@@ -168,34 +174,29 @@
     </div>
 
     <script>
-        function colorectalCancerType() {
-            var displayStatus = document.getElementById("colorectalCancer").value;
-            document.getElementById("colorectalCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
-        }
-        
-        function breastCancerType() {
-            var displayStatus = document.getElementById("breastCancer").value;
-            document.getElementById("breastCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
-        }
-        
-        function lungCancerType() {
-            var displayStatus = document.getElementById("lungCancer").value;
-            document.getElementById("lungCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
-        }
-        
-        function prostateCancerType() {
-            var displayStatus = document.getElementById("prostateCancer").value;
-            document.getElementById("prostateCancerType").style.display = (displayStatus === "yes") ? "block" : "none";
-        }
-        
-        function abdominalAneurysmType() {
-            var displayStatus = document.getElementById("abdominalAneurysm").value;
-            document.getElementById("abdominalAneurysmType").style.display = (displayStatus === "yes") ? "block" : "none";
-        }
-        
-        function coronaryDiseaseType() {
-            var displayStatus = document.getElementById("coronaryDisease").value;
-            document.getElementById("coronaryDiseaseType").style.display = (displayStatus === "yes") ? "block" : "none";
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            document.querySelectorAll('[data-toggle-target]').forEach(function(selectElement) {
+                selectElement.addEventListener('change', function() {
+                    const targetId = this.getAttribute('data-toggle-target');
+                    const targetElement = document.getElementById(targetId);
+                    targetElement.style.display = (this.value === 'yes') ? 'block' : 'none';
+                });
+            });
+        });
+
+        function addOtherField() {
+            const container = document.getElementById('otherFieldsContainer');
+            const index = container.children.length / 2; // Calculate the index for new field
+            const newField = document.createElement('div');
+            newField.className = 'col-md-6';
+            newField.innerHTML = `
+                <label for="other${index}" class="form-label required">Other <span class="text-danger">*</span></label>
+                <input type="text" id="other${index}" name="other[]" class="form-control" required>
+            `;
+            container.appendChild(newField);
         }
     </script>
 

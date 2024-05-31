@@ -19,8 +19,13 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h1 class="mb-4 text-center">Screening Tests</h1>
+        <div class="text-center mb-4">
+            <h1>Medicals at the Center</h1>
+            <p id="current-date"></p>
+        </div>
         <form id="screeningTestsForm" class="card card-body bg-white shadow-sm form-container">
+            <h1 class="mb-4 text-center">Screening Tests</h1>
+
             <!-- Sigmoidoscopy -->
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
@@ -162,11 +167,10 @@
         </form>
     </div>
     <script>
-        function toggleDate(testType) {
-            var testStatus = document.getElementById(testType).value;
-            var testDateId = testType + 'Date';
-            document.getElementById(testDateId).style.display = (testStatus === 'yes') ? 'block' : 'none';
-        }
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const today  = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
+
     </script>
 
     <!-- Bootstrap JS Bundle -->
