@@ -1,74 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surgical History</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Medical History</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- KaTeX CSS for Math Rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
     <style>
         .form-label {
             font-weight: bold;
         }
         .form-container {
-            padding: 30px;
+            margin: 20px;
+        }
+        .table-container {
+            margin: 20px;
+        }
+        .selected-rows-container {
+            margin: 20px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
+
 <body class="bg-light">
     <div class="container py-5">
         <div class="text-center mb-4">
             <h1>Medicals at the Center</h1>
             <p id="current-date"></p>
         </div>
-        <form id="surgicalHistoryForm" class="card card-body bg-white shadow-sm form-container">
-            <h1 class="mb-4 text-center">Surgical History</h1>
+        <form id="ascvdForm" class="card card-body bg-white shadow-sm form-container">
+            <h1 class="mb-4 text-center">Medical History</h1>
 
-            <!-- Surgery Section -->
-            <div class="row g-3 mb-3">
-                <div class="col-md-6">
-                    <label for="surgery" class="form-label required">Did you undergo any surgeries?</label>
-                    <select id="surgery" name="surgery" class="form-select" required onchange="toggleSurgeryDetails()">
-                        <option value="select">Select...</option>
+            <!-- Selected Rows Container -->
+            <div class="selected-rows-container" id="selectedRowsContainer">
+                <h4>Selected Symptoms/Diagnoses</h4>
+                <table class="table table-bordered" id="selectedRowsTable">
+                    <thead>
+                        <tr>
+                            <th>Symptom/Diagnosis</th>
+                            <th>ICD</th>
+                            <th>Code</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="selectedRowsBody">
+                        <!-- Selected rows will appear here -->
+                    </tbody>
+                </table>
+            </div>
 
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-                <div class="col-md-6" id="surgerySearch" style="display: none;">
-                    <label for="surgerySearchBox" class="form-label required">Search for type of surgery:</label>
-                    <input type="text" id="surgerySearchBox" name="surgerySearchBox" class="form-control" placeholder="Enter surgery type">
-                </div>
+            <!-- Table -->
+            <div class="table-container">
+                <table id="example" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Symptom/Diagnosis</th>
+                            <th>ICD</th>
+                            <th>Code</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="BA00" data-code="2-275, 2-278"></td><td>Coronary Artery Bypass Grafting (CABG)</td><td>CD-11</td><td>2-275, 2-278</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-280" data-code="2-280"></td><td>Heart Valve Replacement/Repair</td><td>ICD-11</td><td>2-280</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="7-804, 7-805" data-code="7-804, 7-805"></td><td>Hip Replacement</td><td>ICD-11</td><td>7-804, 7-805</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="7-800, 7-801" data-code="7-800, 7-801"></td><td>Knee Replacement</td><td>ICD-11</td><td>7-800, 7-801</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="MA20" data-code="MA20"></td><td>Hysterectomy</td><td>ICD-11</td><td>MA20</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="MA40" data-code="MA40"></td><td>Prostatectomy</td><td>ICD-11</td><td>MA40</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-150, 5-152" data-code="5-150, 5-152"></td><td>Colectomy</td><td>ICD-11</td><td>5-150, 5-152</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-171" data-code="5-171"></td><td>Liver Resection</td><td>ICD-11</td><td>5-171</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="6-322, 6-326" data-code="6-322, 6-326"></td><td>Lung Resection</td><td>ICD-11</td><td>6-322, 6-326</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5A20" data-code="5A20"></td><td>Gastric Bypass</td><td>ICD-11</td><td>5A20</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5A21" data-code="5A21"></td><td>Gastric Banding</td><td>ICD-11</td><td>5A21</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-211" data-code="5-211"></td><td>Esophagectomy</td><td>ICD-11</td><td>5-211</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-181" data-code="5-181"></td><td>Pancreatectomy</td><td>ICD-11</td><td>5-181</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-553" data-code="5-553"></td><td>Nephrectomy</td><td>ICD-11</td><td>5-553</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-611" data-code="5-611"></td><td>Cystectomy</td><td>ICD-11</td><td>5-611</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5A60" data-code="5A60"></td><td>Thyroidectomy</td><td>ICD-11</td><td>5A60</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="3-832" data-code="3-832"></td><td>Laminectomy</td><td>ICD-11</td><td>3-832</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="3-835" data-code="3-835"></td><td>Spinal Fusion</td><td>ICD-11</td><td>3-835</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-511" data-code="5-511"></td><td>Cholecystectomy</td><td>ICD-11</td><td>5-511</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-420" data-code="5-420"></td><td>Hernia Repair</td><td>ICD-11</td><td>5-420</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-850" data-code="5-850"></td><td>Mastectomy</td><td>ICD-11</td><td>5-850</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-855" data-code="5-855"></td><td>Breast Reconstruction</td><td>ICD-11</td><td>5-855</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-611" data-code="5-611"></td><td>Bladder Resection</td><td>ICD-11</td><td>5-611</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5-591" data-code="5-591"></td><td>Adrenalectomy</td><td>ICD-11</td><td>5-591</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5A50" data-code="5A50"></td><td>Liver Transplant</td><td>ICD-11</td><td>5A50</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="5A60" data-code="5A60"></td><td>Kidney Transplant</td><td>ICD-11</td><td>5A60</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="6-706" data-code="6-706"></td><td>Bone Marrow Transplant</td><td>ICD-11</td><td>6-706</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="1-207" data-code="1-207"></td><td>Cerebral Aneurysm Repair</td><td>ICD-11</td><td>1-207</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="1-510" data-code="1-510"></td><td>Craniotomy for Tumor</td><td>ICD-11</td><td>1-510</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-272" data-code="2-272"></td><td>Endarterectomy</td><td>ICD-11</td><td>2-272</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-267" data-code="2-267"></td><td>Aortic Aneurysm Repair</td><td>ICD-11</td><td>2-267</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-281" data-code="2-281"></td><td>Mitral Valve Repair</td><td>ICD-11</td><td>2-281</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-280" data-code="2-280"></td><td>Aortic Valve Replacement</td><td>ICD-11</td><td>2-280</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-340" data-code="2-340"></td><td>Femoral Popliteal Bypass</td><td>ICD-11</td><td>2-340</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-272" data-code="2-272"></td><td>Carotid Endarterectomy</td><td>ICD-11</td><td>2-272</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-273" data-code="2-273"></td><td>Coronary Angioplasty</td><td>ICD-11</td><td>2-273</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-230" data-code="2-230"></td><td>Pacemaker Insertion</td><td>ICD-11</td><td>2-230</td></tr>
+                        <tr><td><input type="checkbox" class="rowCheckbox" data-icd="2-233" data-code="2-233"></td><td>Implantable Cardioverter-Defibrillator (ICD) Insertion</td><td>ICD-11</td><td>2-233</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Submit Button -->
+            <div class="form-container text-center">
+                <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit Selected</button>
             </div>
             <div class="text-center">
-                <a href="MedicationsHistory.html" class="btn btn-primary mt-3" role="button">Next</a>
+                <a href="SurgicalHistory.html" class="btn btn-primary mt-3" role="button">Next</a>
             </div>
         </form>
     </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        function toggleSurgeryDetails() {
-            var surgeryStatus = document.getElementById("surgery").value;
-            var searchElement = document.getElementById("surgerySearch");
-            searchElement.style.display = (surgeryStatus === "yes") ? "block" : "none";
+        $(document).ready(function() {
+            // Initialize DataTables with pagination set to 20 rows per page and lengthMenu options
+            var table = $('#example').DataTable({
+                "pageLength": 20,
+                "lengthMenu": [10, 20, 30, 40, 50]
+            });
+
+            // Handle row selection
+            $('#example tbody').on('change', '.rowCheckbox', function() {
+                const row = $(this).closest('tr');
+                const symptom = row.find('td:eq(1)').text();
+                const icd = $(this).data('icd');
+                const code = row.find('td:eq(3)').text();
+
+                if (this.checked) {
+                    addRowToSelected(symptom, icd, code);
+                } else {
+                    removeRowFromSelected(icd);
+                }
+            });
+        });
+
+        function addRowToSelected(symptom, icd, code) {
+            const selectedRowsBody = $('#selectedRowsBody');
+            const newRow = `
+                <tr data-icd="${icd}">
+                    <td>${symptom}</td>
+                    <td>${icd}</td>
+                    <td>${code}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRowFromSelected('${icd}', true)">Remove</button></td>
+                </tr>
+            `;
+            selectedRowsBody.append(newRow);
+        }
+
+        function removeRowFromSelected(icd, uncheck = false) {
+            const selectedRow = $(`#selectedRowsBody tr[data-icd="${icd}"]`);
+            selectedRow.remove();
+            if (uncheck) {
+                $(`#example tbody .rowCheckbox[data-icd="${icd}"]`).prop('checked', false);
+            }
+        }
+
+        function handleSubmit() {
+            const selectedICDs = [];
+            $('#selectedRowsBody tr').each(function() {
+                selectedICDs.push($(this).data('icd'));
+            });
+
+            if (selectedICDs.length > 0) {
+                alert('Submitting: ' + selectedICDs.join(', '));
+                // You can replace the alert with actual form submission or any other logic
+            } else {
+                alert('No rows selected');
+            }
         }
     </script>
     <script>
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const today  = new Date();
         document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
-
     </script>
-    <script>
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const today  = new Date();
-        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
-
-    </script>
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- KaTeX JS for Math Rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
 </body>
+
 </html>
+

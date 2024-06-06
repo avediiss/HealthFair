@@ -1,246 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Medical History</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"
+    />
     <style>
-        .form-label {
-            font-weight: bold;
-        }
-        .form-container {
-            margin: 20px;
-        }
-        .table-container {
-            margin: 20px;
-        }
+      .form-label {
+        font-weight: bold;
+      }
+      .form-container {
+        margin: 20px;
+      }
+      .table-container {
+        margin: 20px;
+      }
+      .selected-rows-container {
+        margin: 20px;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
     </style>
-</head>
+  </head>
 
-<body class="bg-light">
+  <body class="bg-light">
     <div class="container py-5">
-        <div class="text-center mb-4">
-            <h1>Medicals at the Center</h1>
-            <p id="current-date"></p>
-        </div>
-        <form id="ascvdForm" class="card card-body bg-white shadow-sm form-container">
-            
-            <h1 class="mb-4 text-center">Medical History</h1>
-         
-     <!-- Table -->
-     <div class="table-container">
-        <table id="example" class="table table-striped">
+      <div class="text-center mb-4">
+        <h1>Medicals at the Center</h1>
+        <p id="current-date"></p>
+      </div>
+      <form
+        id="ascvdForm"
+        class="card card-body bg-white shadow-sm form-container"
+      >
+        <h1 class="mb-4 text-center">Medical History</h1>
+
+        <!-- Selected Rows Container -->
+        <div class="selected-rows-container" id="selectedRowsContainer">
+          <h4>Selected Symptoms/Diagnoses</h4>
+          <table class="table table-bordered" id="selectedRowsTable">
             <thead>
-                <tr>
-                    <th>Select</th>
-                    <th style="display:none;">Symptom/Diagnosis</th>
-                    <th>ICD</th>
-                </tr>
+              <tr>
+                <th>Symptom/Diagnosis</th>
+                <th>ICD</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="selectedRowsBody">
+              <!-- Selected rows will appear here -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+          <table id="example" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Select</th>
+                <th>Symptom/Diagnosis</th>
+                <th>ICD</th>
+              </tr>
             </thead>
             <tbody id="tableBody">
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="MD81.4"></td>
-                    <td style="display:none;">Abdominal Pain</td>
-                    <td>MD81.4</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="1A2Y"></td>
-                    <td style="display:none;">Acute Gastroenteritis</td>
-                    <td>1A2Y</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="DA0A.Y"></td>
-                    <td style="display:none;">Dental pain</td>
-                    <td>DA0A.Y</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="ME05.1"></td>
-                    <td style="display:none;">Diarrhea</td>
-                    <td>ME05.1</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="DD90.4"></td>
-                    <td style="display:none;">Nausea or vomiting</td>
-                    <td>DD90.4</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="CA42"></td>
-                    <td style="display:none;">Acute bronchitis</td>
-                    <td>CA42</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="CA01"></td>
-                    <td style="display:none;">Acute sinusitis</td>
-                    <td>CA01</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="3A00.Y"></td>
-                    <td style="display:none;">Other specified iron deficiency anemia</td>
-                    <td>3A00.Y</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="3A9Z"></td>
-                    <td style="display:none;">Anemia</td>
-                    <td>3A9Z</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="CA22.1"></td>
-                    <td style="display:none;">Certain specified chronic obstructive pulmonary disease</td>
-                    <td>CA22.1</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="ME84.0"></td>
-                    <td style="display:none;">Cervical spine pain</td>
-                    <td>ME84.0</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="MD30.Z"></td>
-                    <td style="display:none;">Chest pain unspecified</td>
-                    <td>MD30.Z</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="MD12"></td>
-                    <td style="display:none;">Cough</td>
-                    <td>MD12</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="9A60.Z"></td>
-                    <td style="display:none;">Conjunctivitis unspecified</td>
-                    <td>9A60.Z</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="RA01"></td>
-                    <td style="display:none;">COVID-19</td>
-                    <td>RA01</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="MD11.5"></td>
-                    <td style="display:none;">Dyspnoea</td>
-                    <td>MD11.5</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="MG22"></td>
-                    <td style="display:none;">Fatigue</td>
-                    <td>MG22</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="MG26"></td>
-                    <td style="display:none;">Fever</td>
-                    <td>MG26</td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="rowCheckbox" data-icd="1D9Z"></td>
-                    <td style="display:none;">Fever + Other non specific symptoms</td>
-                    <td>1D9Z</td>
-                </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Submit Button -->
-            <div class="form-container text-center">
-                <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit Selected</button>
-            </div>
-            <div class="text-center">
-                <a href="SurgicalHistory.html" class="btn btn-primary mt-3" role="button">Next</a>
-            </div>
-        </form>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="BA00" />
+                </td>
+                <td>Essential hypertension</td>
+                <td>BA00</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="5B84" />
+                </td>
+                <td>Type 2 diabetes mellitus</td>
+                <td>5B84</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="CA23" />
+                </td>
+                <td>Asthma</td>
+                <td>CA23</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="CB16" />
+                </td>
+                <td>Chronic obstructive pulmonary disease (COPD)</td>
+                <td>CB16</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="BA41" />
+                </td>
+                <td>Acute myocardial infarction</td>
+                <td>BA41</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="2C25" />
+                </td>
+                <td>Malignant neoplasm of lung</td>
+                <td>2C25</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="2C60" />
+                </td>
+                <td>Malignant neoplasm of breast</td>
+                <td>2C60</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="2C82" />
+                </td>
+                <td>Malignant neoplasm of prostate</td>
+                <td>2C82</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="2B90" />
+                </td>
+                <td>Malignant neoplasm of colon</td>
+                <td>2B90</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="8B10" />
+                </td>
+                <td>Ischemic Stroke</td>
+                <td>8B10</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="GB60" />
+                </td>
+                <td>Chronic kidney disease</td>
+                <td>GB60</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="DD90" />
+                </td>
+                <td>Cirrhosis of liver</td>
+                <td>DD90</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="MG30" />
+                </td>
+                <td>Chronic low back pain</td>
+                <td>MG30</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="8A80" />
+                </td>
+                <td>Migraine</td>
+                <td>8A80</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="BA01" />
+                </td>
+                <td>Atrial fibrillation</td>
+                <td>BA01</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="5B71" />
+                </td>
+                <td>Hyperlipidemia</td>
+                <td>5B71</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="4A60" />
+                </td>
+                <td>Hypothyroidism</td>
+                <td>4A60</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="2D10" />
+                </td>
+                <td>Benign prostatic hyperplasia</td>
+                <td>2D10</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="5B82" />
+                </td>
+                <td>Obesity</td>
+                <td>5B82</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="GB42" />
+                </td>
+                <td>Sleep apnea</td>
+                <td>GB42</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="DD50" />
+                </td>
+                <td>Inflammatory bowel disease</td>
+                <td>DD50</td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="rowCheckbox"
+                    data-icd="2A00-2A09"
+                  />
+                </td>
+                <td>Leukemia</td>
+                <td>2A00-2A09</td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="rowCheckbox"
+                    data-icd="2B00-2B19"
+                  />
+                </td>
+                <td>Lymphoma</td>
+                <td>2B00-2B19</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="8A51" />
+                </td>
+                <td>Parkinson's disease</td>
+                <td>8A51</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="DD51" />
+                </td>
+                <td>Ulcerative colitis</td>
+                <td>DD51</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="MB52" />
+                </td>
+                <td>Osteoporosis</td>
+                <td>MB52</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="EK10" />
+                </td>
+                <td>Psoriasis</td>
+                <td>EK10</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="6A20" />
+                </td>
+                <td>Schizophrenia</td>
+                <td>6A20</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="8A20" />
+                </td>
+                <td>Alzheimer's disease</td>
+                <td>8A20</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="6A70" />
+                </td>
+                <td>Depressive episode</td>
+                <td>6A70</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="6B00" />
+                </td>
+                <td>Anxiety disorder</td>
+                <td>6B00</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="MB30" />
+                </td>
+                <td>Osteoarthritis</td>
+                <td>MB30</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="MB20" />
+                </td>
+                <td>Rheumatoid arthritis</td>
+                <td>MB20</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="" />
+                </td>
+                <td>Anemia</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="" />
+                </td>
+                <td>Peptic ulcer disease</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="" />
+                </td>
+                <td>Epilepsy</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="11A00" />
+                </td>
+                <td>Glaucoma</td>
+                <td>11A00</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" class="rowCheckbox" data-icd="AB30" />
+                </td>
+                <td>Hearing loss</td>
+                <td>AB30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Submit Button -->
+        <div class="form-container text-center">
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="handleSubmit()"
+          >
+            Submit Selected
+          </button>
+        </div>
+        <div class="text-center">
+          <a
+            href="SurgicalHistory.html"
+            class="btn btn-primary mt-3"
+            role="button"
+            >Next</a
+          >
+        </div>
+      </form>
     </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Initialize DataTables
-            var table = $('#example').DataTable({
-                "columnDefs": [
-                    {
-                        "targets": [1],
-                        "visible": false
-                    }
-                ]
-            });
-
-            // Apply the search
-            $('#searchInput').on('keyup', function() {
-                table.columns(1).search(this.value).draw();
-            });
+      $(document).ready(function () {
+        // Initialize DataTables with pagination set to 20 rows per page and lengthMenu options
+        var table = $("#example").DataTable({
+          pageLength: 20,
+          lengthMenu: [10, 20, 30, 40, 50],
         });
 
-        function handleSubmit() {
-            const selectedICDs = [];
-            document.querySelectorAll('.rowCheckbox:checked').forEach(checkbox => {
-                selectedICDs.push(checkbox.getAttribute('data-icd'));
-            });
-            
-            if (selectedICDs.length > 0) {
-                alert('Submitting: ' + selectedICDs.join(', '));
-                // You can replace the alert with actual form submission or any other logic
-            } else {
-                alert('No rows selected');
-            }
+        // Handle row selection
+        $("#example tbody").on("change", ".rowCheckbox", function () {
+          const row = $(this).closest("tr");
+          const symptom = row.find("td:eq(1)").text();
+          const icd = $(this).data("icd");
+
+          if (this.checked) {
+            addRowToSelected(symptom, icd);
+          } else {
+            removeRowFromSelected(icd);
+          }
+        });
+      });
+
+      function addRowToSelected(symptom, icd) {
+        const selectedRowsBody = $("#selectedRowsBody");
+        const newRow = `
+                <tr data-icd="${icd}">
+                    <td>${symptom}</td>
+                    <td>${icd}</td>
+                    <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRowFromSelected('${icd}', true)">Remove</button></td>
+                </tr>
+            `;
+        selectedRowsBody.append(newRow);
+      }
+
+      function removeRowFromSelected(icd, uncheck = false) {
+        const selectedRow = $(`#selectedRowsBody tr[data-icd="${icd}"]`);
+        selectedRow.remove();
+        if (uncheck) {
+          $(`#example tbody .rowCheckbox[data-icd="${icd}"]`).prop(
+            "checked",
+            false
+          );
         }
+      }
+
+      function handleSubmit() {
+        const selectedICDs = [];
+        $("#selectedRowsBody tr").each(function () {
+          selectedICDs.push($(this).data("icd"));
+        });
+
+        if (selectedICDs.length > 0) {
+          alert("Submitting: " + selectedICDs.join(", "));
+          // You can replace the alert with actual form submission or any other logic
+        } else {
+          alert("No rows selected");
+        }
+      }
     </script>
     <script>
-        function toggleUrinaryTract() {
-            var urinaryStatus = document.getElementById("urinary").value;
-            document.getElementById("urinaryTractDetails").style.display = (urinaryStatus === "yes") ? "block" : "none";
-        }
-
-        function toggleCancerType() {
-            var cancerStatus = document.getElementById("cancer").value;
-            document.getElementById("cancerType").style.display = (cancerStatus === "yes") ? "block" : "none";
-        }
-
-        function toggleEndocrineType() {
-            var endocrineStatus = document.getElementById("endocrine").value;
-            document.getElementById("endocrineType").style.display = (endocrineStatus === "yes") ? "block" : "none";
-        }
-
-        function togglePsychologicalType() {
-            var psychologicalStatus = document.getElementById("psychological").value;
-            document.getElementById("psychologicalType").style.display = (psychologicalStatus === "yes") ? "block" : "none";
-        }
-
-        function toggleNeurologicType() {
-            var neurologicStatus = document.getElementById("neurologic").value;
-            document.getElementById("neurologicType").style.display = (neurologicStatus === "yes") ? "block" : "none";
-        }
-
-        function toggleCardiologicType() {
-            var cardiologicStatus = document.getElementById("cardiologic").value;
-            document.getElementById("cardiologicType").style.display = (cardiologicStatus === "yes") ? "block" : "none";
-        }
-
-        function toggleGastroType() {
-            var gastroStatus = document.getElementById("gastro").value;
-            document.getElementById("gastroType").style.display = (gastroStatus === "yes") ? "block" : "none";
-        }
-
-        function togglePulmonaryType() {
-            var pulmonaryStatus = document.getElementById("pulmonary").value;
-            document.getElementById("pulmonaryType").style.display = (pulmonaryStatus === "yes") ? "block" : "none";
-        }
-
-        function toggleMusculoskeletalType() {
-            var musculoskeletalStatus = document.getElementById("musculoskeletal").value;
-            document.getElementById("musculoskeletalType").style.display = (musculoskeletalStatus === "yes") ? "block" : "none";
-        }
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      const today = new Date();
+      document.getElementById("current-date").textContent =
+        today.toLocaleDateString("en-US", options);
     </script>
-    <script>
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const today  = new Date();
-        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', options);
-
-    </script>
-</body>
-
+  </body>
 </html>
