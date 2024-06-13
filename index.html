@@ -26,18 +26,17 @@
         }
         .phone-input-group {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
         }
         .phone-input-group input {
             width: 100%; /* Full width for phone input */
             max-width: 400px; /* Adjust the max-width as needed */
+            margin: 0 auto;
         }
         .phone-input-group .iti {
             width: 100%; /* Full width for intl-tel-input */
             max-width: 400px; /* Adjust the max-width as needed */
-        }
-        .phone-input-group .iti__selected-dial-code {
-            display: inline-block; /* Ensure the dial code is displayed inline */
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -87,7 +86,7 @@
                         <input type="text" name="moname" id="moname" class="form-control">
                     </div>
                     <div class="col-md-4">
-                        <label for="pnum" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                        <label for="pnum" class="form-label">Phone Number <span class="text-danger">*</span></label>
                         <div class="phone-input-group">
                             <input type="tel" name="pnum" id="pnum" class="form-control" required>
                         </div>
